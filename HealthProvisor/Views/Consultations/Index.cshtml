@@ -1,0 +1,53 @@
+﻿@model IEnumerable<HealthProvisor.Models.Consultation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Patient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doctor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.PatientID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doctor.DoctorStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ConsultationID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ConsultationID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ConsultationID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
