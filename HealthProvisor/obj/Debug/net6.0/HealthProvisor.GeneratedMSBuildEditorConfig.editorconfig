@@ -9,191 +9,223 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = HealthProvisor
 build_property.RootNamespace = HealthProvisor
-build_property.ProjectDir = C:\Users\Lenovo\Desktop\HealthProvisor\HealthProvisor\
+build_property.ProjectDir = C:\Users\Lenovo\Desktop\Health Provisor\Health-Provisor\HealthProvisor\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Lenovo\Desktop\HealthProvisor\HealthProvisor
+build_property.MSBuildProjectDirectory = C:\Users\Lenovo\Desktop\Health Provisor\Health-Provisor\HealthProvisor
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Areas/Identity/Pages/Account/Login.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Areas/Identity/Pages/Account/Logout.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Areas/Identity/Pages/Account/Register.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Areas/Identity/Pages/_ViewImports.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Consultations/Create.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Categories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Categories/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Categories/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Categories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Categories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Consultations/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VsdGF0aW9uc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Consultations/Delete.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Consultations/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VsdGF0aW9uc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Consultations/Details.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Consultations/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VsdGF0aW9uc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Consultations/Edit.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Consultations/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VsdGF0aW9uc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Consultations/Index.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Consultations/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc3VsdGF0aW9uc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Doctors/Create.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Doctors/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Doctors/Delete.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Doctors/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Doctors/Details.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Doctors/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Doctors/Edit.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Doctors/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Doctors/Index.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Doctors/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Home/Index.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Home/AboutUs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dFVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Home/Privacy.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Patients/Create.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Home/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Patients/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Patients/Delete.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Patients/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Patients/Details.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Patients/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Patients/Edit.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Patients/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Patients/Index.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Patients/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Reviews/Create.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Reviews/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Reviews/Delete.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Reviews/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3c1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Reviews/Details.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Reviews/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3c1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Reviews/Edit.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Reviews/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Reviews/Index.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Reviews/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Shared/Error.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Shared/_HeroLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZXJvTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Testimonials/Create.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Testimonials/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGltb25pYWxzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Testimonials/Delete.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Testimonials/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGltb25pYWxzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Testimonials/Details.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Testimonials/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGltb25pYWxzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Testimonials/Edit.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Testimonials/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGltb25pYWxzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Testimonials/Index.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Testimonials/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGltb25pYWxzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Visas/Create.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Visas/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzYXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Visas/Delete.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Visas/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzYXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Visas/Details.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Visas/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzYXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Visas/Edit.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Visas/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzYXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Visas/Index.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Visas/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzYXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/_ViewImports.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/_ViewStart.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Lenovo/Desktop/HealthProvisor/HealthProvisor/Views/Shared/_Layout.cshtml]
+[C:/Users/Lenovo/Desktop/Health Provisor/Health-Provisor/HealthProvisor/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-8a4q2326va

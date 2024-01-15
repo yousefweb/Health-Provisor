@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GuJXHWiy+xq3LVnTmQeCemRzg3DSt1evdyoYQqISw6dMZ2cblC700Oeurv8Cj+x9sUzzCHvlL0Z40uJjEgwWCg==",
+  "dgSpecHash": "m4P25m4MI9mB/QYvfQAJJCkmP6O9a3oh9Z5AjfQGKyEkj3zgtZvOmOavF0oo55ZkO/nUWK0l9T9PUwVy/hyG5w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\HealthProvisor.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\HealthProvisor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

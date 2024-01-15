@@ -1,68 +1,201 @@
-﻿@model Doctor
+﻿@using HealthProvisor.Data.Enum
+@model HealthProvisor.Models.ViewModel.DoctorRegisterViewModel
 
-@{
-    ViewData["Title"] = "Create";
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-<h1>Create</h1>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Create Doctor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/images/Register.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
 
-<h4>Doctor</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Doctor_Specialization" class="control-label"></label>
-                <input asp-for="Doctor_Specialization" class="form-control" />
-                <span asp-validation-for="Doctor_Specialization" class="text-danger"></span>
+        .container {
+            max-width: 100%;
+        }
+
+        .card {
+            background-color: rgba(216, 212, 226, 0.8);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+            transition: box-shadow 0.3s ease-in-out;
+            max-width: 100%;
+            margin-bottom: 25px;
+        }
+
+            .card:hover {
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+            }
+
+        .card-title {
+            color: #007bff;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: 1px solid #007bff;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border: 1px solid #0056b3;
+            }
+
+        footer {
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">Register Doctor</h2>
+                        <hr />
+
+                        <form asp-action="Create" method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label asp-for="FirstName" class="control-label">First Name</label>
+                                        <input asp-for="FirstName" class="form-control" />
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label asp-for="LastName" class="control-label">Last Name</label>
+                                        <input asp-for="LastName" class="form-control" />
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label asp-for="UserName" class="control-label">UserName</label>
+                                        <input asp-for="UserName" class="form-control" />
+                                        <span asp-validation-for="UserName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label asp-for="Email" class="control-label">Email</label>
+                                        <input asp-for="Email" class="form-control" />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
+                                        <input asp-for="PhoneNumber" class="form-control" />
+                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label asp-for="Doctor_Gender"></label>
+                                        <select asp-for="Doctor_Gender" asp-items="Html.GetEnumSelectList<Gender>()"
+                                                class="form-control"></select>
+                                        <span asp-validation-for="Doctor_Gender" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label asp-for="Doctor_Specialization" class="control-label">
+                                            Doctor
+                                            Specialization
+                                        </label>
+                                        <select asp-for="Doctor_Specialization"
+                                                asp-items="Html.GetEnumSelectList<MedicalSpecialization>()"
+                                                class="form-control"></select>
+                                        <span asp-validation-for="Doctor_Specialization"
+                                              class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label asp-for="CategoryId" class="control-label">Category</label>
+                                        <select asp-for="CategoryId"
+                                                asp-items="new SelectList(Model.Categories, nameof(Category.CategoryId), nameof(Category.CategoryName))"
+                                                class="form-control"></select>
+                                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label asp-for="FormFile" class="control-label">Doctor Image</label>
+                                        <input asp-for="FormFile" type="file" class="form-control" />
+                                        <span asp-validation-for="FormFile" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label asp-for="FormFile" class="control-label">Doctor Certification</label>
+                                        <input asp-for="FormFile" type="file" class="form-control" />
+                                        <span asp-validation-for="FormFile" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label asp-for="Password" class="control-label">Password</label>
+                                        <input asp-for="Password" type="password" class="form-control" />
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label asp-for="ConfirmPassword" class="control-label">Confirm Password</label>
+                                        <input asp-for="ConfirmPassword" type="password" class="form-control" />
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-4 mt-3 text-center">
+                                <div class="col-6 mx-auto">
+                                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Doctor_Age" class="control-label"></label>
-                <input asp-for="Doctor_Age" class="form-control" />
-                <span asp-validation-for="Doctor_Age" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Doctor_Gender" class="control-label"></label>
-                <select asp-for="Doctor_Gender" class="form-control"></select>
-                <span asp-validation-for="Doctor_Gender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Doctor_YearsOfExperience" class="control-label"></label>
-                <input asp-for="Doctor_YearsOfExperience" class="form-control" />
-                <span asp-validation-for="Doctor_YearsOfExperience" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DoctorStatus" class="control-label"></label>
-                <input asp-for="DoctorStatus" class="form-control" />
-                <span asp-validation-for="DoctorStatus" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageName" class="control-label"></label>
-                <input asp-for="ImageName" class="form-control" />
-                <span asp-validation-for="ImageName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ContentType" class="control-label"></label>
-                <input asp-for="ContentType" class="form-control" />
-                <span asp-validation-for="ContentType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+</body>
+</html>

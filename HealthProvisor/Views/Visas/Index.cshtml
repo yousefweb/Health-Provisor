@@ -22,9 +22,6 @@
                 @Html.DisplayNameFor(model => model.ExpDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Amount)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.TransactionDate)
             </th>
             <th>
@@ -46,13 +43,10 @@
                 @Html.DisplayFor(modelItem => item.ExpDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.TransactionDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Patient.PatientID)
+                @Html.DisplayFor(modelItem => item.Patient.UserId)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.VisaId">Edit</a> |

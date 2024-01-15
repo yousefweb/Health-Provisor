@@ -48,7 +48,7 @@ namespace HealthProvisor.Controllers
         // GET: Visas/Create
         public IActionResult Create()
         {
-            ViewData["PatientID"] = new SelectList(_context.Patients, "PatientID", "PatientID");
+            ViewData["PatientID"] = new SelectList(_context.Patients, "PatientID", "UserId");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace HealthProvisor.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("VisaId,CVC,VisaNumber,ExpDate,Amount,TransactionDate,PatientID")] Visa visa)
+        public async Task<IActionResult> Create([Bind("VisaId,CVC,VisaNumber,ExpDate,TransactionDate,PatientID")] Visa visa)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace HealthProvisor.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PatientID"] = new SelectList(_context.Patients, "PatientID", "PatientID", visa.PatientID);
+            ViewData["PatientID"] = new SelectList(_context.Patients, "PatientID", "UserId", visa.PatientID);
             return View(visa);
         }
 
@@ -82,7 +82,7 @@ namespace HealthProvisor.Controllers
             {
                 return NotFound();
             }
-            ViewData["PatientID"] = new SelectList(_context.Patients, "PatientID", "PatientID", visa.PatientID);
+            ViewData["PatientID"] = new SelectList(_context.Patients, "PatientID", "UserId", visa.PatientID);
             return View(visa);
         }
 
@@ -91,7 +91,7 @@ namespace HealthProvisor.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("VisaId,CVC,VisaNumber,ExpDate,Amount,TransactionDate,PatientID")] Visa visa)
+        public async Task<IActionResult> Edit(int id, [Bind("VisaId,CVC,VisaNumber,ExpDate,TransactionDate,PatientID")] Visa visa)
         {
             if (id != visa.VisaId)
             {
@@ -118,7 +118,7 @@ namespace HealthProvisor.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PatientID"] = new SelectList(_context.Patients, "PatientID", "PatientID", visa.PatientID);
+            ViewData["PatientID"] = new SelectList(_context.Patients, "PatientID", "UserId", visa.PatientID);
             return View(visa);
         }
 

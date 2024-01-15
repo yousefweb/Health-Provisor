@@ -1,283 +1,299 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\HealthProvisor.bundle.scp.css",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\HealthProvisor.bundle.scp.css",
       "PackagePath": "staticwebassets\\HealthProvisor.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\css\\animate.css",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\css\\animate.css",
       "PackagePath": "staticwebassets\\css\\animate.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\css\\custom.css",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\css\\custom.css",
       "PackagePath": "staticwebassets\\css\\custom.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\css\\flashy.min.css",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\css\\flashy.min.css",
       "PackagePath": "staticwebassets\\css\\flashy.min.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\css\\flaticon.css",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\css\\flaticon.css",
       "PackagePath": "staticwebassets\\css\\flaticon.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\css\\font-awesome.min.css",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\css\\font-awesome.min.css",
       "PackagePath": "staticwebassets\\css\\font-awesome.min.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\css\\magnific-popup.css",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\css\\magnific-popup.css",
       "PackagePath": "staticwebassets\\css\\magnific-popup.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\css\\owl.carousel.min.css",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\css\\owl.carousel.min.css",
       "PackagePath": "staticwebassets\\css\\owl.carousel.min.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\css\\pogo-slider.min.css",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\css\\pogo-slider.min.css",
       "PackagePath": "staticwebassets\\css\\pogo-slider.min.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\css\\responsive.css",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\css\\responsive.css",
       "PackagePath": "staticwebassets\\css\\responsive.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\css\\responsiveslides.css",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\css\\responsiveslides.css",
       "PackagePath": "staticwebassets\\css\\responsiveslides.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\css\\style.css",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\css\\style.css",
       "PackagePath": "staticwebassets\\css\\style.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\css\\timeline.css",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\css\\timeline.css",
       "PackagePath": "staticwebassets\\css\\timeline.css"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\fonts\\Flaticon.eot",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\fonts\\Flaticon.eot",
       "PackagePath": "staticwebassets\\fonts\\Flaticon.eot"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\fonts\\Flaticon.svg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\fonts\\Flaticon.svg",
       "PackagePath": "staticwebassets\\fonts\\Flaticon.svg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\fonts\\Flaticon.ttf",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\fonts\\Flaticon.ttf",
       "PackagePath": "staticwebassets\\fonts\\Flaticon.ttf"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\fonts\\Flaticon.woff",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\fonts\\Flaticon.woff",
       "PackagePath": "staticwebassets\\fonts\\Flaticon.woff"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\fonts\\FontAwesome.otf",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\fonts\\FontAwesome.otf",
       "PackagePath": "staticwebassets\\fonts\\FontAwesome.otf"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\fonts\\fontawesome-webfont.eot",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\fonts\\fontawesome-webfont.eot",
       "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.eot"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\fonts\\fontawesome-webfont.svg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\fonts\\fontawesome-webfont.svg",
       "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.svg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\fonts\\fontawesome-webfont.ttf",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\fonts\\fontawesome-webfont.ttf",
       "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.ttf"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\fonts\\fontawesome-webfont.woff",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\fonts\\fontawesome-webfont.woff",
       "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.woff"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\fonts\\fontawesome-webfont.woff2",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\fonts\\fontawesome-webfont.woff2",
       "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.woff2"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\about-img-01.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\Register.jpg",
+      "PackagePath": "staticwebassets\\images\\Register.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\RegisterPatient.jpeg",
+      "PackagePath": "staticwebassets\\images\\RegisterPatient.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\about-img-01.jpg",
       "PackagePath": "staticwebassets\\images\\about-img-01.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\about-img-02.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\about-img-02.jpg",
       "PackagePath": "staticwebassets\\images\\about-img-02.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\about-img-03.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\about-img-03.jpg",
       "PackagePath": "staticwebassets\\images\\about-img-03.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\apple-touch-icon.png",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\apple-touch-icon.png",
       "PackagePath": "staticwebassets\\images\\apple-touch-icon.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\blog-img-01.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\blog-img-01.jpg",
       "PackagePath": "staticwebassets\\images\\blog-img-01.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\blog-img-02.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\blog-img-02.jpg",
       "PackagePath": "staticwebassets\\images\\blog-img-02.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\blog-img-03.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\blog-img-03.jpg",
       "PackagePath": "staticwebassets\\images\\blog-img-03.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\favicon.ico",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\favicon.ico",
       "PackagePath": "staticwebassets\\images\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\footer-bg.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\footer-bg.jpg",
       "PackagePath": "staticwebassets\\images\\footer-bg.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\gallery-01.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\gallery-01.jpg",
       "PackagePath": "staticwebassets\\images\\gallery-01.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\gallery-02.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\gallery-02.jpg",
       "PackagePath": "staticwebassets\\images\\gallery-02.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\gallery-03.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\gallery-03.jpg",
       "PackagePath": "staticwebassets\\images\\gallery-03.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\gallery-04.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\gallery-04.jpg",
       "PackagePath": "staticwebassets\\images\\gallery-04.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\gallery-05.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\gallery-05.jpg",
       "PackagePath": "staticwebassets\\images\\gallery-05.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\gallery-06.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\gallery-06.jpg",
       "PackagePath": "staticwebassets\\images\\gallery-06.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\gallery-07.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\gallery-07.jpg",
       "PackagePath": "staticwebassets\\images\\gallery-07.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\gallery-08.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\gallery-08.jpg",
       "PackagePath": "staticwebassets\\images\\gallery-08.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\img-1.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\hero.jpg",
+      "PackagePath": "staticwebassets\\images\\hero.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\img-1.jpg",
       "PackagePath": "staticwebassets\\images\\img-1.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\img-2.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\img-2.jpg",
       "PackagePath": "staticwebassets\\images\\img-2.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\img-3.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\img-3.jpg",
       "PackagePath": "staticwebassets\\images\\img-3.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\logo.png",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\login.jpg",
+      "PackagePath": "staticwebassets\\images\\login.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\logo.png",
       "PackagePath": "staticwebassets\\images\\logo.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\menu-arrow.png",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\menu-arrow.png",
       "PackagePath": "staticwebassets\\images\\menu-arrow.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\preloader.gif",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\preloader.gif",
       "PackagePath": "staticwebassets\\images\\preloader.gif"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\ptn-bg.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\ptn-bg.jpg",
       "PackagePath": "staticwebassets\\images\\ptn-bg.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\slider-01.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\slider-01.jpg",
       "PackagePath": "staticwebassets\\images\\slider-01.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\slider-02.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\slider-02.jpg",
       "PackagePath": "staticwebassets\\images\\slider-02.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\slider-03.jpg",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\slider-03.jpg",
       "PackagePath": "staticwebassets\\images\\slider-03.jpg"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\images\\tag-line.png",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\images\\tag-line.png",
       "PackagePath": "staticwebassets\\images\\tag-line.png"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\index.html",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\TweenMax.min.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\TweenMax.min.js",
       "PackagePath": "staticwebassets\\js\\TweenMax.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\contact-form-script.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\contact-form-script.js",
       "PackagePath": "staticwebassets\\js\\contact-form-script.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\custom.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\custom.js",
       "PackagePath": "staticwebassets\\js\\custom.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\form-validator.min.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\form-validator.min.js",
       "PackagePath": "staticwebassets\\js\\form-validator.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\images-loded.min.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\images-loded.min.js",
       "PackagePath": "staticwebassets\\js\\images-loded.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\isotope.min.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\isotope.min.js",
       "PackagePath": "staticwebassets\\js\\isotope.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\jquery.magnific-popup.min.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\jquery.magnific-popup.min.js",
       "PackagePath": "staticwebassets\\js\\jquery.magnific-popup.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\jquery.min.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\jquery.min.js",
       "PackagePath": "staticwebassets\\js\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\jquery.pogo-slider.min.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\jquery.pogo-slider.min.js",
       "PackagePath": "staticwebassets\\js\\jquery.pogo-slider.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\main.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\main.js",
       "PackagePath": "staticwebassets\\js\\main.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\owl.carousel.min.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\owl.carousel.min.js",
       "PackagePath": "staticwebassets\\js\\owl.carousel.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\popper.min.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\popper.min.js",
       "PackagePath": "staticwebassets\\js\\popper.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\responsiveslides.min.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\responsiveslides.min.js",
       "PackagePath": "staticwebassets\\js\\responsiveslides.min.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\slider-index.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\slider-index.js",
       "PackagePath": "staticwebassets\\js\\slider-index.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\js\\smoothscroll.js",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\js\\smoothscroll.js",
       "PackagePath": "staticwebassets\\js\\smoothscroll.js"
     },
     {
-      "Id": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\wwwroot\\php\\form-process.php",
+      "Id": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\wwwroot\\php\\form-process.php",
       "PackagePath": "staticwebassets\\php\\form-process.php"
     },
     {

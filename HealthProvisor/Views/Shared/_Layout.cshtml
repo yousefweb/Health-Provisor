@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> signInManager
+<!DOCTYPE html>
 <html lang="en"><!-- Basic -->
 <head>
 	<meta charset="utf-8">
@@ -29,6 +31,7 @@
     <link rel="stylesheet" href="~/css/custom.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 
+	<!-- CSS Files -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 
@@ -55,8 +58,17 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="left-top">
-						<a class="new-btn-d br-2" href="#"><span>Change name</span></a>
+						@if (signInManager.IsSignedIn(User))
+						{
+							<a class="new-btn-d br-2" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"><span>Login</span></a>
+							<a class="new-btn-d br-2" asp-action="Profile" asp-controller="Patients"><span>Register</span></a>
+							<div class="mail-b"><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> @User.Identity.Name</a></div>
+						}
+						else{
+						<a class="new-btn-d br-2" asp-area="Identity" asp-page="/Account/Login"><span>Login</span></a>
+						<a class="new-btn-d br-2" asp-action="Register" asp-controller="Home"><span>Register</span></a>
 						<div class="mail-b"><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> HealthProvisor@gmail.com</a></div>
+						}
 					</div>
 				</div>
 				<div class="col-lg-6">
@@ -89,14 +101,12 @@
 				</button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
                     <ul class="navbar-nav">
-                        <li><a class="nav-link" href="#home">Home</a></li>
-                        <li><a class="nav-link" href="#about">About Us</a></li>
-                        <li><a class="nav-link" href="#services">Services</a></li>
-						<li><a class="nav-link" href="#appointment">Appointment</a></li>
-                        <li><a class="nav-link" href="#gallery">Gallery</a></li>
-						<li><a class="nav-link" href="#team">Doctor</a></li>
-                        <li><a class="nav-link" href="#blog">Blog</a></li>
-						<li><a class="nav-link" href="#contact">Contact</a></li>
+						<li><a class="nav-link" asp-action="Index" asp-controller="Home">Home</a></li>
+						<li><a class="nav-link"  asp-action="AboutUs" asp-controller="Home">About Us</a></li>
+						<li><a class="nav-link"  asp-action="Services" asp-controller="Home">Services</a></li>
+						<li><a class="nav-link"  asp-action="Index" asp-controller="Home">Gallery</a></li>
+						<li><a class="nav-link"  asp-action="AboutUs" asp-controller="Home">Doctor</a></li>
+						<li><a class="nav-link"  asp-action="Services" asp-controller="Home">Blog</a></li>
                     </ul>
                 </div>
             </div>

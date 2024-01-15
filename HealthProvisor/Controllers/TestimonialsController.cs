@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HealthProvisor.Data;
 using HealthProvisor.Models;
+using System.Security.Claims;
 
 namespace HealthProvisor.Controllers
 {
@@ -57,16 +58,13 @@ namespace HealthProvisor.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TestimonialID,Date,TestimonialStatus,TestimonialMessage,PatientID")] Testimonial testimonial)
+        public async Task<IActionResult> Create(Testimonial testimonial)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(testimonial);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["PatientID"] = new SelectList(_context.Patients, "PatientID", "PatientID", testimonial.PatientID);
-            return View(testimonial);
+            testimonial.Patient.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            testimonial.TestimonialStatus = "Pending";
+            _context.Add(testimonial);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Testimonials/Edit/5
@@ -159,7 +157,14 @@ namespace HealthProvisor.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
+        public async Task<IActionResult> EditTestimonialStatus(int testimonialId, string newStatus)
+        {
+            var testimonial = await _context.Testimonials.FindAsync(testimonialId);
+            testimonial.TestimonialStatus = newStatus;
+            _context.Update(testimonial);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Testimonials", "Admin");
+        }
         private bool TestimonialExists(int id)
         {
           return (_context.Testimonials?.Any(e => e.TestimonialID == id)).GetValueOrDefault();

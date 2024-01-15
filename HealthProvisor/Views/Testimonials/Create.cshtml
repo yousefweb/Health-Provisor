@@ -13,23 +13,9 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
-                <span asp-validation-for="Date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TestimonialStatus" class="control-label"></label>
-                <input asp-for="TestimonialStatus" class="form-control" />
-                <span asp-validation-for="TestimonialStatus" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="TestimonialMessage" class="control-label"></label>
                 <input asp-for="TestimonialMessage" class="form-control" />
                 <span asp-validation-for="TestimonialMessage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PatientID" class="control-label"></label>
-                <select asp-for="PatientID" class ="form-control" asp-items="ViewBag.PatientID"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

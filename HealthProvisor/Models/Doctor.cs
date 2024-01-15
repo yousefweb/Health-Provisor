@@ -8,14 +8,15 @@ public class Doctor
 	[Key]
 	public int DoctorID { get; set; }
 
-	[Required]
-	public string UserId { get; set; }
-	public virtual User User { get; set; }
+	public string ?UserId { get; set; }
+	public virtual User? User { get; set; }
 
+    public int? CategoryId { get; set; }
+    public virtual Category Category { get; set; }
 
-	[Required(ErrorMessage = "Please enter your specialization.")]
-    [StringLength(100, ErrorMessage = "Specialization must not exceed 100 characters.")]
-    public string Doctor_Specialization { get; set; }
+    [Required(ErrorMessage = "Please enter your specialization.")]
+    public MedicalSpecialization? Doctor_Specialization { get; set; }
+
 
     [Required(ErrorMessage = "Please enter the doctor's age.")]
     [Range(26, 100, ErrorMessage = "Age must be between 26 and 100.")]
@@ -30,7 +31,7 @@ public class Doctor
     public int Doctor_YearsOfExperience { get; set; }
 
     [Required(ErrorMessage = "Doctor status is required")]
-    public string DoctorStatus { get; set; }
+    public string ?DoctorStatus { get; set; }
 
     [StringLength(255, ErrorMessage = "Image name length must be less than or equal to 255 characters")]
     public string? ImageName { get; set; }
@@ -39,7 +40,7 @@ public class Doctor
     public string? ContentType { get; set; }
 
     [Required(ErrorMessage = "Certificate is required")]
-    public byte[]? Image { get; set; }
+    public byte[] Image { get; set; }
 
-    public ICollection<Consultation> Consultations { get; set; }
+    public ICollection<Consultation> ?Consultations { get; set; }
 }

@@ -9,7 +9,8 @@ namespace HealthProvisor.Data
 	{
 		public DbSet<Patient> Patients { get; set; }
 		public DbSet<Doctor> Doctors { get; set; }
-		public DbSet<Consultation> Consultations { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Consultation> Consultations { get; set; }
 		public DbSet<Visa> Visas { get; set; }
 		public DbSet<Testimonial> Testimonials { get; set; }
 		public DbSet<Review> Reviews { get; set; }

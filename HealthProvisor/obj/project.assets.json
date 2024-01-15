@@ -11501,11 +11501,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\HealthProvisor.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\HealthProvisor.csproj",
       "projectName": "HealthProvisor",
-      "projectPath": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\HealthProvisor.csproj",
+      "projectPath": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\HealthProvisor.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lenovo\\Desktop\\HealthProvisor\\HealthProvisor\\obj\\",
+      "outputPath": "C:\\Users\\Lenovo\\Desktop\\Health Provisor\\Health-Provisor\\HealthProvisor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
