@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Doctor>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .thead-dark {
+        background-color: #343a40;
+        color: white;
+    }
+</style>
+<h1>Doctors</h1>
+
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Full Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Specialization
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                Years of Experience
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Certificate
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName) <br />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Doctor_Specialization)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Doctor_Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Doctor_Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Doctor_YearsOfExperience)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DoctorStatus)
+                </td>
+                <td>
+                    @{
+                        string imageBase64_2 = item.Certificate != null ? Convert.ToBase64String(item.Certificate) : string.Empty;
+                    }
+                    <img src="data:image;base64,@imageBase64_2" style="width: 80px; height: 80px; border-radius: 50%;" alt="Doctor Certificate">
+                </td>    
+                <td>
+                    @{
+                        string imageBase64 = item.Image != null ? Convert.ToBase64String(item.Image) : string.Empty;
+                    }
+                    <img src="data:image;base64,@imageBase64" style="width: 80px; height: 80px; border-radius: 50%;" alt="Profile Image">
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.DoctorID">Edit</a>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.DoctorID">Details</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.DoctorID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

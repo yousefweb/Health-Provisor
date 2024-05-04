@@ -117,14 +117,12 @@
 				</button>
 				<div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
 					<ul class="navbar-nav">
-						<li><a class="nav-link" href="#home">Home</a></li>
-						<li><a class="nav-link" href="#about">About Us</a></li>
-						<li><a class="nav-link" href="#services">Services</a></li>
-						<li><a class="nav-link" href="#appointment">Appointment</a></li>
-						<li><a class="nav-link" href="#gallery">Gallery</a></li>
-						<li><a class="nav-link" href="#team">Doctor</a></li>
-						<li><a class="nav-link" href="#blog">Blog</a></li>
-						<li><a class="nav-link" href="#contact">Contact</a></li>
+						<li><a class="nav-link" asp-action="Index" asp-controller="Home" asp-area="">Home</a></li>
+						<li><a class="nav-link" asp-action="AboutUs" asp-controller="Home" asp-area="">About Us</a></li>
+						<li><a class="nav-link" asp-action="Services" asp-controller="Home" asp-area="">Services</a></li>
+						<li><a class="nav-link" asp-action="Index" asp-controller="Home" asp-area="">Gallery</a></li>
+						<li><a class="nav-link" asp-action="AboutUs" asp-controller="Home" asp-area="">Doctor</a></li>
+						<li><a class="nav-link" asp-action="Services" asp-controller="Home" asp-area="">Blog</a></li>
 					</ul>
 				</div>
 			</div>

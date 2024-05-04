@@ -1,0 +1,121 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@inject SignInManager<User> signInManager
+
+    @if (signInManager?.IsSignedIn(User) == null)
+    {
+          IgnoreBody();
+        Context.Response.Redirect("../../Identity/Account/Login");
+    }
+    else
+    {
+    <html>
+    <head>
+        <title>@ViewData["Title"] - Admin Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="~/dashboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="~/dashboard/css/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <!-- Logo -->
+                        <div class="logo">
+                            <h1><a asp-action="Index" asp-controller="Admin" asp-area="Administrator">Admin Dashboard</a></h1>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="input-group form">
+                                    <input type="text" name="search" class="form-control" placeholder="Search...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" type="button">Search</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="navbar navbar-inverse" role="banner">
+                            <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                                <ul class="nav navbar-nav">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            @{
+                                                var emailClaim = User.FindFirst(ClaimTypes.Email);
+                                                var email = emailClaim != null ? emailClaim.Value : "";
+                                            }
+                                             @email
+                                            <b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu animated fadeInUp">
+                                            <li><a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">Logout</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-content">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="sidebar content-box" style="display: block;">
+                        <ul class="nav">
+                            <!-- Main menu -->
+                            <li class="current"><a asp-action="Index" asp-controller="Admin" asp-area="Administrator"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+                            <li><a asp-action="Index" asp-controller="Home" asp-area=""><i class="glyphicon glyphicon-home"></i>Home</a></li>
+                            <li><a asp-action="DoctorRequest" asp-controller="Doctors"><i class="glyphicon glyphicon-calendar"></i> Doctor Request</a></li>
+                            <li><a asp-action="Index" asp-controller="Doctors"><i class="glyphicon glyphicon-stats"></i>Doctors</a></li>
+@*                             <li><a asp-action="Index" asp-controller="Patients"><i class="glyphicon glyphicon-list"></i> Patients</a></li>
+ *@                            <li><a asp-action="Index" asp-controller="Categories"><i class="glyphicon glyphicon-record"></i> Categories</a></li>
+                            <li><a asp-action="TestimonialsRequest" asp-controller="Testimonials"><i class="glyphicon glyphicon-pencil"></i> Testimonials</a></li>
+@*                             <li><a asp-action="Index" asp-controller="Reviews"><i class="glyphicon glyphicon-tasks"></i> Reviews</a></li>
+ *@                            <li class="submenu">
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-list"></i> Setting
+                                    <span class="caret pull-right"></span>
+                                </a>
+                                <!-- Sub menu -->
+                                <ul>
+                                    <li><a asp-area="Identity" asp-page="/Account/ForgotPassword">Forgot Password</a></li>
+@*                                     <li><a asp-action="Edit" asp-controller="Admin">Change Info</a></li>
+ *@                                </ul>
+                            </li>
+                            <li><a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"><i class="glyphicon glyphicon-log-out"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-10">
+
+
+                    <div class="content-box-large">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="fixed-bottom bg-dark text-white text-center py-3">
+            <div class="container">
+                <div class="copy">
+                    Copyright 2024 <a href="#">Health Provisor</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="~/dashboard/bootstrap/js/bootstrap.min.js"></script>
+        <script src="~/dashboard/js/custom.js"></script>
+    </body>
+    </html>
+
+    }

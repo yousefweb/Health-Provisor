@@ -1,4 +1,9 @@
 ﻿@model Testimonial
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using HealthProvisor.Data
+@inject SignInManager<User> signInManager
+@inject ApplicationDbContext _context
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -13,8 +18,8 @@
     }
 
     #testimonialForm textarea {
-        width: 100%; 
-        max-width: 400px; 
+        width: 100%;
+        max-width: 400px;
     }
 
     #testimonialModal .modal-dialog {
@@ -46,7 +51,7 @@
                         <div class="lbox-details">
                             <h1>We are Expert in The Field of Midical Consultation</h1>
                             <p>Medical consultation is a professional interaction between a healthcare provider and a patient</p>
-                            <a href="#appointment" class="btn">Consultation</a>
+                            <a href="#consult" class="btn">Consultation</a>
                         </div>
                     </div>
                 </div>
@@ -74,7 +79,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="title-box">
-                    <h2>Gallery</h2>
+                    <h2>
+                        Some specialties
+                    </h2>
                     <p>Explore our medical consultation facilities through the gallery.</p>
                 </div>
             </div>
@@ -85,7 +92,9 @@
                 <div class="box-gallery">
                     <img src="images/gallery-01.jpg" alt="">
                     <div class="box-content">
-                        <h3 class="title">Medical Room 1</h3>
+                        <h3 class="title">
+                            General Consultations
+                        </h3>
                         <ul class="icon">
                             <li><a href="images/gallery-01.jpg"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
                         </ul>
@@ -96,7 +105,9 @@
                 <div class="box-gallery">
                     <img src="images/gallery-02.jpg" alt="">
                     <div class="box-content">
-                        <h3 class="title">Medical Equipment</h3>
+                        <h3 class="title">
+                            Internal Consultations
+                        </h3>
                         <ul class="icon">
                             <li><a href="images/gallery-02.jpg"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
                         </ul>
@@ -107,7 +118,9 @@
                 <div class="box-gallery">
                     <img src="images/gallery-03.jpg" alt="">
                     <div class="box-content">
-                        <h3 class="title">Consultation Room</h3>
+                        <h3 class="title">
+                            Cardiology Consultations
+                        </h3>
                         <ul class="icon">
                             <li><a href="images/gallery-03.jpg"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
                         </ul>
@@ -118,7 +131,7 @@
                 <div class="box-gallery">
                     <img src="images/gallery-04.jpg" alt="">
                     <div class="box-content">
-                        <h3 class="title">Medical Staff</h3>
+                        <h3 class="title">Oncology Consultations</h3>
                         <ul class="icon">
                             <li><a href="images/gallery-04.jpg"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
                         </ul>
@@ -129,7 +142,9 @@
                 <div class="box-gallery">
                     <img src="images/gallery-05.jpg" alt="">
                     <div class="box-content">
-                        <h3 class="title">Waiting Area</h3>
+                        <h3 class="title">
+                            Neurology Consultations
+                        </h3>
                         <ul class="icon">
                             <li><a href="images/gallery-05.jpg"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
                         </ul>
@@ -140,7 +155,9 @@
                 <div class="box-gallery">
                     <img src="images/gallery-06.jpg" alt="">
                     <div class="box-content">
-                        <h3 class="title">Medical Technology</h3>
+                        <h3 class="title">
+                            Pulmonology Consultations
+                        </h3>
                         <ul class="icon">
                             <li><a href="images/gallery-06.jpg"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
                         </ul>
@@ -151,7 +168,9 @@
                 <div class="box-gallery">
                     <img src="images/gallery-07.jpg" alt="">
                     <div class="box-content">
-                        <h3 class="title">Patient Interaction</h3>
+                        <h3 class="title">
+                            Nephrology Consultations
+                        </h3>
                         <ul class="icon">
                             <li><a href="images/gallery-07.jpg"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
                         </ul>
@@ -162,7 +181,9 @@
                 <div class="box-gallery">
                     <img src="images/gallery-08.jpg" alt="">
                     <div class="box-content">
-                        <h3 class="title">Modern Facility</h3>
+                        <h3 class="title">
+                            Hematology Consultations
+                        </h3>
                         <ul class="icon">
                             <li><a href="images/gallery-08.jpg"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
                         </ul>
@@ -172,9 +193,71 @@
         </div>
     </div>
 </div>
-
-
 <!-- End Gallery -->
+<!-- Start Category -->
+<div id="consult" class="blog-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-box">
+                    <h2>Consultation Categories</h2>
+                    <p>Explore Our Specialized Consultation Categories.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in (List<Category>)(ViewBag.Categories))
+            {
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="blog-inner">
+                        <div class="blog-img">
+                            @{
+                                string imageBase64 = Convert.ToBase64String(@item.Image);
+                            }
+                            <img class="img-fluid" src="data:image;base64,@imageBase64" alt="@item.CategoryName" />
+                        </div>
+                        <div class="item-meta">
+                            <a href="#"><i class="fa fa-user-o"></i> @item.CategoryName</a>
+                            <span class="dti">@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")</span>
+                        </div>
+                        <h2>@item.BenefitsHeading</h2>
+                        <p>@item.CategoryDescription</p>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            @if (User.IsInRole("PATIENT"))
+                            {
+                                <a class="new-btn-d br-2" asp-action="Create" asp-controller="Visas" asp-route-id="@item.CategoryId">Go Now <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+
+                            }
+                        }
+                        else
+                        {
+                            <a class="new-btn-d br-2" onclick="showLoginAlert()">Go Now <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+
+                            <script>
+                                function showLoginAlert() {
+                                    Swal.fire({
+                                        title: 'Login Required',
+                                        text: 'You should login first.',
+                                        icon: 'warning',
+                                        confirmButtonText: 'OK'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            window.location.href = '/Identity/Account/Login';
+                                        }
+                                    });
+                                }
+                            </script>
+                        }
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</div>
+<!-- End Category -->
 <!-- Start testimonial -->
 <section class="testimonials-clean" style="margin-top: 30px; padding-bottom: 30px; background-color: #f8f8f8;">
     <div class="container">
@@ -187,45 +270,43 @@
             </p>
         </div>
         <!-- Button to trigger the modal popup -->
-        <div class="d-flex justify-content-center align-items-center mt-3">
-            <button id="openTestimonialModal" class="btn btn-primary" style="color: white;">
-                Leave a feedback
-            </button>
-        </div>
+        @if (signInManager.IsSignedIn(User) && User.IsInRole("PATIENT"))
+        {
+            <div class="d-flex justify-content-center align-items-center mt-3">
+                <button id="openTestimonialModal" class="btn btn-primary" style="color: white;">
+                    Leave a feedback
+                </button>
+            </div>
+        }
+        <section class="testimonials-clean">
+            <div class="container">
+                <div class="row people">
+                    <div class="categories__slider owl-carousel">
+                        @foreach (var testimonial in (List<Testimonial>)(ViewBag.Testimonials))
+                        {
+                            <div class="item mb-4">
+                                <div class="box">
+                                    <p class="description" style="font-weight: bold;">@testimonial.TestimonialMessage</p>
+                                </div>
+                                <div class="author text-center">
+                                    @{
+                                        string imageBase64 = Convert.ToBase64String(testimonial.Patient.Image);
+                                        string userId = testimonial.Patient?.UserId;
+                                        var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+                                        string userFirstName = user?.FirstName ?? string.Empty;
+                                        string userLastName = user?.LastName ?? string.Empty;
+                                        string userFullName = $"{userFirstName} {userLastName}".Trim();
+                                    }
+                                    <img class="rounded-circle" src="data:image;base64,@imageBase64" alt="@userFullName" />
+                                    <h5 class="name">@userFullName</h5>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="row people">
-            <div class="col-md-6 col-lg-4 item">
-                <div class="box">
-                    <p class="description">"Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est."</p>
-                </div>
-                <div class="author text-center">
-                    <img class="rounded-circle" src="assets/img/1.jpg" alt="Ben Johnson">
-                    <h5 class="name">Ben Johnson</h5>
-                    <p class="title">CEO of Company Inc.</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 item">
-                <div class="box">
-                    <p class="description">"Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id."</p>
-                </div>
-                <div class="author text-center">
-                    <img class="rounded-circle" src="assets/img/3.jpg" alt="Carl Kent">
-                    <h5 class="name">Carl Kent</h5>
-                    <p class="title">Founder of Style Co.</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 item">
-                <div class="box">
-                    <p class="description">"Aliquam varius finibus est, et interdum justo suscipit. Vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu."</p>
-                </div>
-                <div class="author text-center">
-                    <img class="rounded-circle" src="assets/img/2.jpg" alt="Emily Clark">
-                    <h5 class="name">Emily Clark</h5>
-                    <p class="title">Owner of Creative Ltd.</p>
-                </div>
-            </div>
-
-        </div>
 
         <!-- Modal Popup Form -->
         <div class="modal fade" id="testimonialModal" tabindex="-1" role="dialog" aria-labelledby="testimonialModalLabel" aria-hidden="true">
@@ -263,40 +344,39 @@
 </section>
 
 
-        <!-- Modal Popup Form -->
-        <div class="modal fade" id="testimonialModal" tabindex="-1" role="dialog" aria-labelledby="testimonialModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="testimonialModalLabel">Leave Feedback</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="testimonialForm" asp-controller="Testimonials" asp-action="Create">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <div class="form-group row">
-                                <label for="TestimonialMessage" class="col-form-label col-sm-4">Feedback Message:</label>
-                                <div class="col-sm-8">
-                                    <textarea name="TestimonialMessage" class="form-control" rows="5" maxlength="120"></textarea>
-                                    <span for="TestimonialMessage" class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div class="form-group text-center">
-                                <input type="submit" value="Create" class="btn btn-primary" onclick="submitForm()" />
-                                <button type="button" class="btn btn-secondary" onclick="cancelForm()" data-dismiss="modal">Cancel</button>
-                            </div>
-                        </form>
-                        <div id="confirmationMessage" style="display: none; color: green;">
-                            Thank you for your testimonial! It has been submitted successfully.
+<!-- Modal Popup Form -->
+<div class="modal fade" id="testimonialModal" tabindex="-1" role="dialog" aria-labelledby="testimonialModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="testimonialModalLabel">Leave Feedback</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="testimonialForm" asp-controller="Testimonials" asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label for="TestimonialMessage" class="col-form-label col-sm-4">Feedback Message:</label>
+                        <div class="col-sm-8">
+                            <textarea name="TestimonialMessage" class="form-control" rows="5" maxlength="120"></textarea>
+                            <span for="TestimonialMessage" class="text-danger"></span>
                         </div>
                     </div>
+                    <div class="form-group text-center">
+                        <input type="submit" value="Create" class="btn btn-primary" onclick="submitForm()" />
+                        <button type="button" class="btn btn-secondary" onclick="cancelForm()" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+                <div id="confirmationMessage" style="display: none; color: green;">
+                    Thank you for your testimonial! It has been submitted successfully.
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+
 <style>
     .modal-dialog {
         max-width: 80%;
@@ -313,7 +393,7 @@
     }
 
     #testimonialModal .modal-dialog {
-        max-width: 60%; 
+        max-width: 60%;
     }
 
     #testimonialModal .modal-content {
@@ -334,3 +414,4 @@
     });
 </script>
 <!-- End testimonial -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> @*for consultation*@

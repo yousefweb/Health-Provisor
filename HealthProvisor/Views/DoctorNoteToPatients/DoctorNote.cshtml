@@ -1,0 +1,134 @@
+﻿@{
+    ViewData["Title"] = "Doctor Note";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+}
+@model DoctorNoteToPatient
+<style>
+    .bold-text {
+        font-weight: bold;
+    }
+
+    .custom-container {
+        margin-bottom: 100px;
+    }
+</style>
+<div class="container-fluid custom-container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h1 class="card-title mb-0">Doctor Note</h1>
+                </div>
+                <div class="card-body">
+                    <form asp-action="DoctorNote" method="post" id="doctorNoteForm">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label for="ConsultationDetails">Consultation Details</label>
+                            <textarea class="form-control" id="ConsultationDetails" name="ConsultationDetails" rows="12" cols="25" readonly></textarea>
+                            <span asp-validation-for="ConsultationDetails" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="DoctorNote">Doctor Note</label>
+                            <textarea class="form-control" id="DoctorNote" name="DoctorNote" rows="12" cols="50"></textarea>
+                            <span asp-validation-for="DoctorNote" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="PatientId">Patient</label>
+                            <select class="form-control" id="patientId" name="PatientId">
+                                <option value="">-- Select Patient --</option>
+                                @{
+                                    @if (ViewBag.Consult != null)
+                                    {
+                                        var uniquePatients = ((List<Consultation>)(ViewBag.Consult))
+                                        .Select(c => new KeyValuePair<int, string>(c.PatientID, $"{c.Patient.User.FirstName} {c.Patient.User.LastName}"))
+                                        .Distinct()
+                                        .ToList();
+
+                                        foreach (var patient in uniquePatients)
+                                        {
+                                            <option value="@patient.Key">@patient.Value</option>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <option value="">-- No patients available --</option>
+                                    }
+
+                                }
+                            </select>
+                            <span asp-validation-for="PatientID" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="MessageTime">Message Time</label>
+                            <input type="datetime-local" class="form-control" id="MessageTime" name="MessageTime" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" readonly />
+                            <span asp-validation-for="MessageTime" class="text-danger"></span>
+                        </div>
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#patientId").change(function () {
+                var selectedPatientId = $(this).val();
+                if (selectedPatientId) {
+                    $.ajax({
+                        url: '@Url.Action("GetPatientDetails", "DoctorNoteToPatients")',
+                        type: 'POST',
+                        data: { patientId: selectedPatientId },
+                        success: function (consultationDetails) {
+                            $("#ConsultationDetails").val(consultationDetails).addClass('bold-text');
+                        },
+                        error: function () {
+                            alert('Error occurred while retrieving patient details.');
+                        }
+                    });
+                } else {
+                    $("#ConsultationDetails").val("");
+                }
+            });
+        });
+            $(document).ready(function () {
+                $("#doctorNoteForm").submit(function (e) {
+                    e.preventDefault();
+
+                    $.ajax({
+                        url: '@Url.Action("DoctorNote", "DoctorNoteToPatients")',
+                        type: 'POST',
+                        data: $(this).serialize(),
+                        success: function (response) {
+                            if (response.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success!',
+                                    text: 'The note has been sent successfully.'
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: response.error
+                                });
+                            }
+                        },
+                        error: function () {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'An error occurred while sending the note. Please try again.'
+                            });
+                        }
+                    });
+                });
+            });
+
+   
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+}

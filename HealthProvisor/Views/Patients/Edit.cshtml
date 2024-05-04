@@ -1,54 +1,91 @@
-﻿@model Patient
+﻿@using HealthProvisor.Data.Enum
+@model Patient
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
 
-<h4>Patient</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="PatientID" />
-            <div class="form-group">
-                <label asp-for="Patient_Age" class="control-label"></label>
-                <input asp-for="Patient_Age" class="form-control" />
-                <span asp-validation-for="Patient_Age" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Patient_Gender" class="control-label"></label>
-                <select asp-for="Patient_Gender" class="form-control"></select>
-                <span asp-validation-for="Patient_Gender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageName" class="control-label"></label>
-                <input asp-for="ImageName" class="form-control" />
-                <span asp-validation-for="ImageName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ContentType" class="control-label"></label>
-                <input asp-for="ContentType" class="form-control" />
-                <span asp-validation-for="ContentType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="container">
+    <h4>Edit Patient</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="PatientID" />
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label asp-for="User.FirstName" class="control-label"></label>
+                            </td>
+                            <td>
+                                <input asp-for="User.FirstName" class="form-control" value="@Model.User?.FirstName" readonly/>
+                                <span asp-validation-for="User.FirstName" class="text-danger"></span>
+                            </td>
+                            <td>
+                                <label asp-for="User.LastName" class="control-label"></label>
+                            </td>
+                            <td>
+                                <input asp-for="User.LastName" class="form-control" value="@Model.User?.LastName" readonly />
+                                <span asp-validation-for="User.LastName" class="text-danger"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label asp-for="User.Email" class="control-label"></label>
+                            </td>
+                            <td>
+                                <input asp-for="User.Email" class="form-control" value="@Model.User?.Email" readonly />
+                                <span asp-validation-for="User.Email" class="text-danger"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label asp-for="Patient_Age" class="control-label"></label>
+                            </td>
+                            <td>
+                                <input asp-for="Patient_Age" class="form-control" value="@Model.Patient_Age" readonly />
+                                <span asp-validation-for="Patient_Age" class="text-danger"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label asp-for="Patient_Gender" class="control-label"></label>
+                            </td>
+                            <td>
+                                <select asp-for="Patient_Gender" class="form-control" asp-items="@Html.GetEnumSelectList<Gender>()" disabled></select>
+                                <span asp-validation-for="Patient_Gender" class="text-danger"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label asp-for="Image" class="control-label"></label>
+                            </td>
+                            <td>
+                                @{
+                                    string imageBase64 = Model.Image!=null ? Convert.ToBase64String(Model.Image) : string.Empty;
+                                }
+                                <img src="data:image;base64,@imageBase64" style="width: 80px; height: 80px; border-radius: 50%;" alt="Profile Image">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a asp-action="PatientRequest" class="btn btn-secondary">Back to List</a>
+
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

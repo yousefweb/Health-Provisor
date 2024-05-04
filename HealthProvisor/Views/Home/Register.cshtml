@@ -1,5 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_HeroLayout.cshtml";
+    ViewData["Title"] = "UserRegistration Page";
 }
 
 <div class="bsb-hero-1 px-3 bsb-overlay bsb-hover-pull" style="background-image: url('../images/hero.jpg');">
@@ -9,10 +10,10 @@
                 <h1 class="display-3 fw-bold mb-3">Doctor or Patient</h1>
                 <p class="lead text-light mb-5">Empower your healthcare journey with our comprehensive toolkit. Seamlessly connect with healthcare professionals, utilize advanced features for medical consultations, and enhance the patient-doctor relationship with our powerful frontend solutions.</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a asp-controller="Doctors" asp-action="Create" class="btn bsb-btn-3xl btn-light gap-3">Doctor</a>
+                    <a asp-controller="Doctors" asp-action="Create" asp-area="" class="btn bsb-btn-3xl btn-light gap-3">Doctor</a>
                     <a asp-controller="Patients" asp-action="Create" class="btn bsb-btn-3xl btn-outline-light">Patient</a>
                 </div>
             </div>
-        </div>
+        </div> 
     </div>
 </div>

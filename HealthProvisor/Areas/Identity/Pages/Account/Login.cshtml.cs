@@ -102,7 +102,6 @@ namespace HealthProvisor.Areas.Identity.Pages.Account
 
             returnUrl ??= Url.Content("~/");
 
-            // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
@@ -118,51 +117,65 @@ namespace HealthProvisor.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
-
-                if (result.Succeeded)
+                var user = await _userManager.FindByEmailAsync(Input.Email);
+                if (user != null)
                 {
-                    _logger.LogInformation("User logged in.");
-
-                    var user = _context.Users.FirstOrDefault(n => n.Email == Input.Email);
-
-                    if (user != null)
+                    var result = await _signInManager.PasswordSignInAsync(user.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                    if (result.Succeeded)
                     {
-                        var userRole = _context.UserRoles.FirstOrDefault(n => n.UserId == user.Id);
 
-                        if (userRole != null)
+                        var isDoctor = await _userManager.IsInRoleAsync(user, "DOCTOR");
+
+                        if (isDoctor)
                         {
-                            if (userRole.RoleId == "1")
+                            var doctor = _context.Doctors.FirstOrDefault(d => d.UserId == user.Id);
+
+                            if (doctor != null)
                             {
-                                return RedirectToAction("Index", "Admin");
-                            }
-                            else if (userRole.RoleId == "2" || userRole.RoleId == "3")
-                            {
-                                return RedirectToAction("Index", "Home");
+                                if (doctor.DoctorStatus == "Pending")
+                                {
+                                    ModelState.AddModelError(string.Empty, "Your status is Pending. You cannot log in.");
+                                    await _signInManager.SignOutAsync();
+                                    return Page();
+                                }
+                                else if (doctor.DoctorStatus == "Reject")
+                                {
+                                    ModelState.AddModelError(string.Empty, "Your status is rejected. You cannot log in.");
+                                    await _signInManager.SignOutAsync();
+                                    return Page();
+                                }
                             }
                         }
+
+                        _logger.LogInformation("User logged in.");
+                        var isAdmin = await _userManager.IsInRoleAsync(user,"ADMIN");
+                        if (isAdmin)
+                        {
+                            return RedirectToAction("Index", "Admin", new { area = "Administrator" });
+                        }
+
+                        return LocalRedirect(returnUrl);
                     }
-
-
-                    return LocalRedirect(returnUrl);
-                }
-
-                if (result.RequiresTwoFactor)
-                {
-                    _logger.LogWarning($"Login failed for user '{Input.Email}'. Result: {result}");
-
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
-                }
-
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToPage("./Lockout");
+                    else
+                    {
+                        if (result.RequiresTwoFactor)
+                        {
+                            return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
+                        }
+                        if (result.IsLockedOut)
+                        {
+                            _logger.LogWarning("User account locked out.");
+                            return RedirectToPage("./Lockout");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError(string.Empty, "Invalid username or password.");
+                        }
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
+                    ModelState.AddModelError(string.Empty, "Invalid username or password.");
                 }
             }
 

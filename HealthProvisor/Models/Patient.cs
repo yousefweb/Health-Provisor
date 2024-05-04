@@ -31,8 +31,9 @@ public class Patient
 
 
     public byte[]? Image { get; set; }
-
     
     public ICollection<Consultation>? Consultations { get; set; }
+    public ICollection<DoctorNoteToPatient>? DoctorNoteToPatients { get; set; }
+
 }
 

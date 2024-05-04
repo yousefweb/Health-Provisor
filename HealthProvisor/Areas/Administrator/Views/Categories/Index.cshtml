@@ -1,0 +1,68 @@
+﻿@model IEnumerable<HealthProvisor.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .thead-dark {
+        background-color: #343a40;
+        color: white;
+    }
+</style>
+
+<h1>Categories</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Create New</a>
+</p>
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BenefitsHeading)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                Actions
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BenefitsHeading)
+                </td>
+                <td>
+                    @{
+                        string imageBase64 = Convert.ToBase64String(item.Image);
+                    }
+                    <img src="data:image;base64,@imageBase64" style="width: 80px; height: 80px; border-radius: 50%;" alt="Profile Image">
+                </td>
+                <td>
+                    <a class="btn btn-warning"asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a> 
+                    <a class="btn btn-primary"asp-action="Details" asp-route-id="@item.CategoryId">Details</a> 
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.CategoryId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

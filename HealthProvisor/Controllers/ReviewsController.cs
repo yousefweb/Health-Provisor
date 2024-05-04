@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HealthProvisor.Data;
 using HealthProvisor.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace HealthProvisor.Controllers
 {
@@ -14,11 +15,13 @@ namespace HealthProvisor.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public ReviewsController(ApplicationDbContext context)
+        private readonly UserManager<User> _userManager;
+
+        public ReviewsController(ApplicationDbContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
-
         // GET: Reviews
         public async Task<IActionResult> Index()
         {
@@ -59,16 +62,47 @@ namespace HealthProvisor.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ReviewId,ReviewRate,ReviewMessage,ReviewDate,ConsultationID,PatientID")] Review review)
+        public async Task<IActionResult> Create([Bind("ReviewId,ReviewRate,ReviewMessage,ReviewDate,PatientID,ConsultationID")] Review review)
         {
-            if (ModelState.IsValid)
+            if (User.Identity.IsAuthenticated)
             {
-                _context.Add(review);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var user = await _userManager.GetUserAsync(User);
+
+                if (user != null)
+                {
+                    var patient = _context.Patients.FirstOrDefault(p => p.UserId == user.Id);
+
+                    if (patient != null)
+                    {
+                        review.PatientID = patient.PatientID;
+
+                        if (review.ConsultationID > 0)
+                        {
+                            var isConsultationValid = _context.Consultations
+                                .Any(c => c.ConsultationID == review.ConsultationID && c.PatientID == patient.PatientID);
+
+                            if (!isConsultationValid)
+                            {
+                                ModelState.AddModelError(string.Empty, "Invalid consultation for the patient.");
+                                return View(review);
+                            }
+
+                            review.ReviewStatus = "Pending";
+
+                            _context.Add(review);
+                            await _context.SaveChangesAsync();
+
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError(string.Empty, "Consultation ID is required.");
+                        }
+                    }
+                }
             }
-            ViewData["ConsultationID"] = new SelectList(_context.Consultations, "ConsultationID", "Notes", review.ConsultationID);
-            ViewData["PatientID"] = new SelectList(_context.Patients, "PatientID", "PatientID", review.PatientID);
+
+            ModelState.AddModelError(string.Empty, "User not found, not authenticated, or patient not found.");
             return View(review);
         }
 

@@ -1,0 +1,194 @@
+﻿@model HealthProvisor.Models.Visa
+
+@{
+    ViewData["Title"] = "Checkout Page";
+    var phone = ViewBag.PhoneNumber;
+    var Email = ViewBag.Email;
+    var FullName = ViewBag.FullName;
+    var VisaNumber = ViewBag.VisaNumber;
+    var CVC = ViewBag.CVC;
+
+    var visiblePart = "";
+    if (VisaNumber != null)
+    {
+        visiblePart = new string('*', VisaNumber.Length - 4) + VisaNumber.Substring(VisaNumber.Length - 4, 4);
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceed</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('/images/Payment.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .cardP {
+            background: #16181a;
+            border-radius: 14px;
+            max-width: 77%;
+            display: block;
+            margin: auto;
+            padding: 60px;
+            padding-left: 20px;
+            padding-right: 20px;
+            box-shadow: 2px 10px 40px black;
+            z-index: 99;
+        }
+
+        input {
+            font-family: 'Work Sans', sans-serif;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid transparent;
+            color: #8d8e91;
+            transition: border-bottom .4s;
+        }
+
+            input:focus {
+                border-bottom: 1px solid #1abc9c;
+                outline: none;
+            }
+
+
+        .logo-card {
+            max-width: 80px;
+            margin-bottom: 10px;
+            margin-top: 5px;
+        }
+
+        .cardP .form-label, .cardP .form-control {
+            color: #dbdce0;
+            background-color: #949494;
+            border-color: #343a40;
+        }
+
+            .cardP .form-control:focus {
+                border-color: #1abc9c;
+                box-shadow: 0 0 0 0.25rem rgba(26, 188, 156, 0.25);
+            }
+
+    </style>
+</head>
+<body>
+    <form id="proceedForm" asp-action="Proceed" asp-controller="Visas" method="post">
+        <div class="container">
+            <div class="cardP">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card bg-dark text-white">
+                            <div class="card-body">
+                                <img src="https://seeklogo.com/images/V/VISA-logo-62D5B26FE1-seeklogo.com.png" class="logo-card img-fluid" alt="Visa Logo">
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <label>Card number:</label>
+                                        <input type="text" class="form-control" placeholder="0000 0000 0000 0000" value="@visiblePart" readonly>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <label>Name:</label>
+                                        <input type="text" class="form-control" placeholder="User Name" value="@FullName" readonly>
+                                    </div>
+                                    <div class="col">
+                                        <label>CVC:</label>
+                                        <input type="text" class="form-control" placeholder="000" value="@CVC" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-6">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p class="mb-1">Cost:</p>
+                                    <h2 class="cost">$5</h2>
+                                    <p class="mb-1 mt-3">Name:</p>
+                                    <h2 class="seller">@FullName</h2>
+                                </div>
+                                <div class="col">
+                                    <p class="mb-1">User Info:</p>
+                                    <h3 class="bought-items">User Email</h3>
+                                    <p class="bought-items description">@Email</p>
+                                    <h3 class="bought-items">User Number</h3>
+                                    <p class="bought-items description">@phone</p>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <p class="comprobe mt-4">This information will be sent to your email</p>
+                                <button type="submit" id="proceedButton" class="btn btn-primary mt-3">Proceed Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            $("#proceedForm").submit(function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: '@Url.Action("Proceed", "Visas")',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success!',
+                                text: 'The transaction has been completed successfully.',
+                                onClose: function () {
+                                    window.location.href = '@Url.Action("Index", "Home")';
+                                }
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: response.error || 'An error occurred. Please try again later.'
+                            });
+                        }
+                    },
+                    error: function () {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'An error occurred while processing the request. Please try again later.'
+                        });
+                    }
+                });
+            });
+        });
+       
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+
+}
+

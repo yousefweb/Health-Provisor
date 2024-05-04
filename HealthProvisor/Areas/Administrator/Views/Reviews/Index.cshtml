@@ -1,0 +1,62 @@
+﻿@model IEnumerable<HealthProvisor.Models.Review>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Reviews</h1>
+<style>
+    .thead-dark {
+        background-color: #343a40;
+        color: white;
+    }
+</style>
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReviewRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReviewMessage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReviewDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Consultation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Patient.User.FirstName) @Html.DisplayNameFor(model => model.Patient.User.LastName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewMessage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Consultation.Notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.User.FirstName) @Html.DisplayFor(modelItem => item.Patient.User.LastName)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.ReviewId">Edit</a>
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.ReviewId">Details</a>
+                <a class="btn btn-danger"  asp-action="Delete" asp-route-id="@item.ReviewId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

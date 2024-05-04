@@ -4,39 +4,54 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Consultation</h4>
+<div class="container">
+    <h1 class="text-primary">Details</h1>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Patient)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Patient.PatientID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Doctor)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Doctor.DoctorStatus)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Notes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Notes)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.ConsultationID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+    <div>
+        <h4>Consultation</h4>
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row">Patient</th>
+                        <td>@Html.DisplayFor(model => model.Patient.PatientID)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Patient Status</th>
+                        <td>@Html.DisplayFor(model => model.Patient.Patient_Status)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Patient Name</th>
+                        <td>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Patient Email</th>
+                        <td>@Html.DisplayFor(model => model.Patient.User.Email)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Patient Age</th>
+                        <td>@Html.DisplayFor(model => model.Patient.Patient_Age)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Patient Gender</th>
+                        <td>@Html.DisplayFor(model => model.Patient.Patient_Gender)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Date</th>
+                        <td>@Html.DisplayFor(model => model.Date)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Notes</th>
+                        <td>@Html.DisplayFor(model => model.Notes)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="Edit" asp-route-id="@Model?.ConsultationID" class="btn btn-primary">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
 </div>

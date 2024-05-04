@@ -17,6 +17,9 @@ namespace HealthProvisor.Models
         [DataType(DataType.DateTime)]
         public DateTime ReviewDate { get; set; }
 
+        [Required(ErrorMessage = "Testimonial status is required")]
+        public string ReviewStatus { get; set; }
+
         [Required(ErrorMessage = "Consultation ID is required")]
         public int ConsultationID { get; set; }
 

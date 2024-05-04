@@ -510,6 +510,7 @@ button:focus{
 	position: relative;
 	display: inline-block;
 	z-index: 3;
+	border-radius:20px;
 }
 .lbox-details a.btn:hover{
 	background: #00cb86;
@@ -838,14 +839,14 @@ button:focus{
 }
 .services-box .owl-carousel .owl-nav .owl-prev{
 	border: 2px solid #12557f;
-	border-radius: 2px;
+	border-radius: 20px;
 	transition: .2s;
 	letter-spacing: 1px;
 	padding: 10px 18px !important;
 	background: #ffffff;
 	color: #12557f;
 	display: inline-block;
-	line-height: 12px;
+	line-height: 24px;
 	font-size: 34px;
 	margin: 0 10px;
 }
@@ -855,14 +856,14 @@ button:focus{
 }
 .services-box .owl-carousel .owl-nav .owl-next{
 	border: 2px solid #12557f;
-	border-radius: 2px;
+	border-radius: 20px;
 	transition: .2s;
 	letter-spacing: 1px;
 	padding: 10px 18px !important;
 	background: #ffffff;
 	color: #12557f;
 	display: inline-block;
-	line-height: 12px;
+	line-height: 24px;
 	font-size: 34px;
 	margin: 0 10px;
 }
@@ -927,6 +928,22 @@ button:focus{
 .well-block form .form-group button:hover{
 	color: #ffffff;
 }
+/* Define a class for the input */
+.custom-input {
+	border: 2px solid #12557f;
+	/* Add other styles as needed */
+}
+
+	.custom-input::before {
+		background: rgba(18, 85, 127, 0.2);
+		/* Add other styles as needed */
+	}
+
+	/* Hover effect */
+	.custom-input:hover {
+		color: #ffffff;
+		/* Add other styles as needed */
+	}
 
 
 /*------------------------------------------------------------------
@@ -1133,12 +1150,13 @@ button:focus{
     text-transform: capitalize;
     margin: 0px;
 }
-.our-team .post{
-    font-size: 14px;
-    color: #fff;
-    line-height: 26px;
-    text-transform: capitalize;
-}
+	.our-team .post {
+		font-size: 14px;
+		color: #fff;
+		font-weight: bold;
+		line-height: 26px;
+		text-transform: capitalize;
+	}
 .our-team .social{
     padding: 0;
     margin: 40px 0 0 0;
@@ -1360,7 +1378,7 @@ select.form-control:not([size]):not([multiple]){
 
 .footer-box{
 	background: #292f35;
-	padding: 25px 0;
+	padding: 35px 0;
 }
 
 .footer-box .footer-company-name{
@@ -1443,7 +1461,7 @@ select.form-control:not([size]):not([multiple]){
 	background: rgba(18,85,127,0.2);
 }
 
-.subscribe-inner .form-group button:hover {
+.subscribe-inner .form-group button:hover{
 	color: #ffffff;
 }
 

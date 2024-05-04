@@ -1,0 +1,234 @@
+﻿@model Doctor
+@{
+    ViewData["Title"] = "Doctor Profile";
+}
+
+
+<style>
+    body {
+        background-image: url('/images/Doctor Profile.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #BA68C8
+    }
+
+    .profile-button {
+        background: rgb(99, 39, 120);
+        box-shadow: none;
+        border: none
+    }
+
+        .profile-button:hover {
+            background: #682773
+        }
+
+        .profile-button:focus {
+            background: #682773;
+            box-shadow: none
+        }
+
+        .profile-button:active {
+            background: #682773;
+            box-shadow: none
+        }
+
+    .back:hover {
+        color: #682773;
+        cursor: pointer
+    }
+
+    .labels {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .add-experience:hover {
+        background: #BA68C8;
+        color: #fff;
+        cursor: pointer;
+        border: solid 1px #BA68C8
+    }
+
+
+
+    li {
+        font-weight: bolder !important;
+        color: steelblue !important;
+    }
+
+    #stylelist {
+        list-style: disc;
+    }
+
+
+    .certificate-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    #certificate-image {
+        border: 1px solid #ccc;
+        padding: 5px;
+    }
+
+    .CertificateP {
+        color: #892727;
+        font-weight: bold;
+        margin-top: 20px;
+        text-align: center;
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+                <div class="col-md-3 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        @{
+                            string imageBase64 = Model.Image !=null ? Convert.ToBase64String(@Model.Image) : string.Empty;
+                            string certificateBase64 = Model.Certificate != null ? Convert.ToBase64String(Model.Certificate) : string.Empty;
+                        }
+
+                        <img class="rounded-circle mt-5" width="150" src="data:image;base64,@imageBase64"><span class="font-weight-bold">@Model.User.FirstName @Model.User.LastName</span><span class="text-black-50">@Model.User.Email</span><span> </span>
+                    </div>
+                <div>
+                    @if (!string.IsNullOrEmpty(certificateBase64))
+                    {
+                        <div class="certificate-container mt-5">
+                            <input type="hidden" asp-for="Certificate" value="@certificateBase64" />
+                            <img id="certificate-image" class="certificate rounded mt-3" width="150" src="data:image;base64,@certificateBase64">
+                            <br />
+                            <br />
+                            <span class="text-black-50">Medical Certification</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="CertificateP">No certificate uploaded</p>
+                    }
+                </div>
+                </div>
+                <div class="col-md-5 border-right">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Profile Settings</h4>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <label class="labels">First Name</label>
+                                <input type="text" class="form-control" placeholder="first name" value="@Model.User.FirstName" readonly>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">Last Name</label>
+                                <input type="text" class="form-control" placeholder="surname" value="@Model.User.LastName" readonly>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                           <div class="col-md-12">
+                                <label class="labels">Username</label>
+                                <input type="text" class="form-control" placeholder="Username" value="@Model.User.UserName" readonly>
+                           </div>
+                            <div class="col-md-12">
+                                <label class="labels">Mobile Number</label>
+                                <input type="text" class="form-control" placeholder="enter phone number" value="@Model.User.PhoneNumber" readonly>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">Doctor Email</label>
+                                <input type="text" class="form-control" placeholder="Email" value="@Model.User.Email" readonly>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">Doctor Age</label>
+                                <input type="text" class="form-control" placeholder="Age" value="@Model.Doctor_Age" readonly>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">Gender</label>
+                                <input type="text" class="form-control" placeholder="Gender" value="@Model.Doctor_Gender" readonly>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">Specialization</label>
+                                <input type="text" class="form-control" placeholder="Specialization" value="@Model.Doctor_Specialization" readonly>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">Years Of Experience</label>
+                                <input type="text" class="form-control" placeholder="Years Of Experience" value="@Model.Doctor_YearsOfExperience" readonly>
+                            </div>
+
+
+
+                        </div>
+
+                    <div class="mt-5 text-center"><a asp-action="EditProfile" asp-controller="Doctors" asp-route-id="@Model.DoctorID" class="btn btn-primary profile-button">Edit Profile</a></div>
+                    </div>
+                </div>
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center experience">
+                        <h4 class="text-right">Patient List</h4>
+                        <span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Patients</span>
+                    </div>
+                    <br>
+                    <div class="col-md-12">
+                        <label class="labels" for="PatientsCount">Number of Accepted Patient</label>
+                        @if (ViewBag.PatientCountA == null || ViewBag.PatientCountA == 0)
+                        {
+                            <p>None</p>
+                        }
+                        else
+                        {
+                            <p style="color:green; font-weight:bold"> @ViewBag.PatientCountA</p>
+                        }
+                    </div>
+                    <div class="col-md-12">
+                        <label class="labels" for="PatientsCount">Number of Completed Patient</label>
+                        @if (ViewBag.PatientCountC == null || ViewBag.PatientCountC == 0)
+                        {
+                            <p>None</p>
+                        }
+                        else
+                        {
+                            <p style="color:blue; font-weight:bold"> @ViewBag.PatientCountC</p>
+                        }
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="labels" for="PatientsList">My Accepted Patients Names</label>
+                        @if (ViewBag.Patients != null && ViewBag.Patients.Count > 0)
+                        {
+                            var uniquePatientsnames = ((List<string>)ViewBag.Patients).Distinct();
+                            <ul>
+                                @foreach (var patientName in uniquePatientsnames)
+                                {
+                                    <li id="stylelist"> @patientName</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p>There are no patients yet.</p>
+                        }
+                    </div>
+
+                    <div class="col-md-12">
+                        <br><br>
+                        <p class="description" style="color: #6c757d;">Feel free to customize your profile and upload a new picture. We aim to provide a stylish and informative page for you.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

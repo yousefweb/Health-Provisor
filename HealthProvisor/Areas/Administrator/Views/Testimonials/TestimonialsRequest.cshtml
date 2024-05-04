@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "Testimonials";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Testimonials</h1>
+<style>
+    .thead-dark {
+        background-color: #343a40;
+        color: white;
+    }
+</style>
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Full Name
+            </th>
+
+            <th>
+                Testimonial Message
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Testimonial Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var testimonial in (List<Testimonial>)(ViewBag.Testimonials))
+        
+        {
+            <tr>
+                <td>@testimonial.Patient.User.FirstName @testimonial.Patient.User.LastName</td>
+                <td>@testimonial.TestimonialMessage</td>
+                <td>@testimonial.Date</td>
+                <td>
+                    <select asp-for="@testimonial.TestimonialStatus" onchange="confirmUpdateStatus('@testimonial.TestimonialID', this.value, '@testimonial.TestimonialStatus')">
+                        @if (@testimonial.TestimonialStatus == "Pending")
+                        {
+                            <option value="Pending" selected>Pending</option>
+                            <option value="Accept">Accept</option>
+                            <option value="Reject">Reject</option>
+                        }
+                        else if (@testimonial.TestimonialStatus == "Accept")
+                        {
+                            <option value="Pending">Pending</option>
+                            <option value="Accept" selected>Accept</option>
+                            <option value="Reject">Reject</option>
+                        }
+                        else if (@testimonial.TestimonialStatus == "Reject")
+                        {
+                            <option value="Pending">Pending</option>
+                            <option value="Accept">Accept</option>
+                            <option value="Reject" selected>Reject</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@testimonial.TestimonialID">Edit</a>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@testimonial.TestimonialID">Details</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@testimonial.TestimonialID">Delete</a>
+                </td>
+            </tr>
+        }
+      
+    </tbody>
+</table>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmUpdateStatus(TestimonialID, newStatus, currentStatus) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Do you really want to change the Testimonial status?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '@Url.Action("EditTestimonialStatus", "Testimonials")' + `?TestimonialID=${TestimonialID}&newStatus=${newStatus}&currentStatus=${currentStatus}`;
+            } else {
+                document.querySelector(`[value="${currentStatus}"]`).selected = true;
+            }
+        });
+    }
+</script>

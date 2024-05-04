@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace _5Dots.Models
+namespace HealthProvisor.Models
 {
     public class Visa
     {
@@ -17,9 +17,10 @@ namespace _5Dots.Models
         public string VisaNumber { get; set; }
 
         [Required(ErrorMessage = "Expiration date is required")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime ExpDate { get; set; }
+        [Display(Name = "Expiration Date")]
+        [RegularExpression(@"^(0[1-9]|1[0-2])\/\d{2}$", ErrorMessage = "Please enter a valid expiration date in the format MM/yy.")]
+        public string ExpDate { get; set; }
+
 
         [Required(ErrorMessage = "Transaction date is required")]
         [DataType(DataType.DateTime)]
@@ -28,6 +29,18 @@ namespace _5Dots.Models
         [Required]
         public int PatientID { get; set; }
 
-        public Patient Patient { get; set; }
+        public Patient ?Patient { get; set; }
+        public ICollection<Consultation>? Consultations { get; set; }
+
+        public bool Equalss(Visa other)
+        {
+            if (other == null)
+                return false;
+
+            return this.CVC == other.CVC &&
+                   this.VisaNumber == other.VisaNumber &&
+                   this.ExpDate == other.ExpDate &&
+                   this.PatientID == other.PatientID;
+        }
     }
 }

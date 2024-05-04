@@ -1,0 +1,126 @@
+﻿@model IEnumerable<Patient>
+@{
+    ViewData["Title"] = "PatientRequest";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+}
+<style>
+    .table {
+        background-color: deepskyblue;
+        color: white;
+        font-weight: bold;
+    }
+
+    .thead-dark th {
+        background-color: deepskyblue !important;
+        color: white !important;
+        font-weight: bold;
+    }
+
+    .table-container {
+        margin: auto;
+        overflow-x: auto;
+    }
+
+</style>
+
+<h1>Patient Response</h1>
+<div class="table-container">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-dark">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        Full Name
+                    </th>
+                    <th>
+                        Age
+                    </th>
+                    <th>
+                        Gender
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in (List<Patient>)(ViewBag.Patients))
+                {
+                    <tr>
+                        <td>
+                             @item.User.FirstName  @item.User.LastName<br />
+                        </td>
+                        <td>
+                            @item.Patient_Age
+                        </td>
+                        <td>
+                            @item.Patient_Gender
+                        </td>
+                        <td>
+                            @{
+                                string imageBase64 = Convert.ToBase64String(item.Image);
+                            }
+                            <img src="data:image;base64,@imageBase64" style="width: 80px; height: 80px; border-radius: 50%;" alt="Profile Image">
+                        </td>
+                        
+                        <td>
+                            <select asp-for="@item.Patient_Status" onchange="confirmUpdateStatus('@item.PatientID', this.value, '@item.Patient_Status')">
+                                @if (@item.Patient_Status == "Pending")
+                                {
+                                    <option value="Pending" selected>Pending</option>
+                                    <option value="Accept">Accept</option>
+                                    <option value="Reject">Reject</option>
+                                }
+                                else if (@item.Patient_Status == "Accept")
+                                {
+                                    <option value="Pending">Pending</option>
+                                    <option value="Accept" selected>Accept</option>
+                                    <option value="Reject">Reject</option>
+                                }
+                                else if (@item.Patient_Status == "Reject")
+                                {
+                                    <option value="Pending">Pending</option>
+                                    <option value="Accept">Accept</option>
+                                    <option value="Reject" selected>Reject</option>
+                                }
+                            </select>
+
+                        </td>
+
+                        <td>
+                            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.PatientID">Edit</a>
+                            <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.PatientID">Details</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.PatientID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmUpdateStatus(PatientID, newStatus, currentStatus) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Do you really want to change the Doctor status?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '@Url.Action("EditPatientStatus", "Patients")' + `?PatientID=${PatientID}&newStatus=${newStatus}`;
+            } else {
+                document.querySelector(`[value="${currentStatus}"]`).selected = true;
+            }
+        });
+    }
+</script>

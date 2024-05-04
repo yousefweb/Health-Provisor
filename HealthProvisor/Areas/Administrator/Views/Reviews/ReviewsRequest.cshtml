@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Reviews";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Reviews</h1>
+<style>
+    .thead-dark {
+        background-color: #343a40;
+        color: white;
+    }
+</style>
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Patient Name
+            </th>
+
+            <th>
+                Reviews Message
+            </th>
+          
+            <th>
+                Testimonial Status
+            </th>
+            <th>
+                Consultation
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Rate
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var review in (List<Review>)(ViewBag.Reviews))
+
+        {
+            <tr>
+                <td>@review.Patient.User?.FirstName @review.Patient.User?.LastName</td>
+                <td>@review.ReviewMessage</td>
+                <td>
+                    <select asp-for="@review.ReviewStatus" onchange="confirmUpdateStatus('@review.ReviewId', this.value, '@review.ReviewStatus')">
+                        @if (@review.ReviewStatus == "Pending")
+                        {
+                            <option value="Pending" selected>Pending</option>
+                            <option value="Accept">Accept</option>
+                            <option value="Reject">Reject</option>
+                        }
+                        else if (@review.ReviewStatus == "Accept")
+                        {
+                            <option value="Pending">Pending</option>
+                            <option value="Accept" selected>Accept</option>
+                            <option value="Reject">Reject</option>
+                        }
+                        else if (@review.ReviewStatus == "Reject")
+                        {
+                            <option value="Pending">Pending</option>
+                            <option value="Accept">Accept</option>
+                            <option value="Reject" selected>Reject</option>
+                        }
+                    </select>
+                </td>
+                <td>@review.Consultation.Notes</td>
+                <td>@review.ReviewDate</td>
+                <td>@review.ReviewRate</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@review.ReviewId">Edit</a>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@review.ReviewId">Details</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@review.ReviewId">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmUpdateStatus(ReviewId, newStatus, currentStatus) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Do you really want to change the Testimonial status?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '@Url.Action("EditReviewStatus", "Reviews")' + `?ReviewId=${ReviewId}&newStatus=${newStatus}&currentStatus=${currentStatus}`;
+            } else {
+                document.querySelector(`[value="${currentStatus}"]`).selected = true;
+            }
+        });
+    }
+</script>

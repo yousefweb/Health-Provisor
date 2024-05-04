@@ -14,13 +14,16 @@ namespace HealthProvisor.Models.ViewModel
         public string Email { get; set; }
 
         [Required(ErrorMessage = "First name is required")]
+        [RegularExpression("^[a-zA-Z]*$", ErrorMessage = "Only alphabetical characters are allowed for the first name.")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Last name is required")]
+        [RegularExpression("^[a-zA-Z]*$", ErrorMessage = "Only alphabetical characters are allowed for the Last name.")]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Phone number is required")]
         [Phone(ErrorMessage = "Invalid phone number")]
+        [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Age is required")]
@@ -33,14 +36,16 @@ namespace HealthProvisor.Models.ViewModel
 
         public string?Patient_Status { get; set; }
 
-        [Required(ErrorMessage = "Password is required")]
+        [Required(ErrorMessage = "Please enter your password.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Compare("Password", ErrorMessage = "Passwords do not match")]
         [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Please confirm your password.")]
         public string ConfirmPassword { get; set; }
 
+       
         [Required(ErrorMessage = "Image is required")]
         public IFormFile FormFile { get; set; }
     }

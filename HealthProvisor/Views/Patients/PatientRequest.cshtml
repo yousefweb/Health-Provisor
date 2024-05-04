@@ -1,0 +1,144 @@
+﻿@model IEnumerable<Consultation>
+@{
+    ViewData["Title"] = "PatientRequest";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+}
+<style>
+    .page-title-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .page-title {
+        font-size: 38px;
+        font-weight: bold;
+        color: #a2b6c99c;
+        padding: 10px;
+        border-radius: 5px;
+        display: inline-block;
+    }
+
+    .table {
+        background-color: #2458aa;
+        color: white;
+        font-weight: bold;
+    }
+
+    .thead-dark th {
+        background-color: #2458aa !important;
+        color: white !important;
+        font-weight: bold;
+
+    }
+
+    .table-container th,
+    .table-container td {
+        padding: 8px;
+        border: 1px solid #2458aa;
+        text-align: center; 
+    }
+
+    .table-container th {
+        background-color: #2458aa;
+        color: white;
+        font-weight: bold;
+    }
+    .table-container {
+        margin: auto;
+        overflow-x: auto;
+    }
+</style>
+<div class="page-title-container">
+    <h1 class="page-title">Patient Request</h1>
+</div>
+<div class="table-container">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-dark">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        Full Name
+                    </th>
+                    <th>
+                        Age
+                    </th>
+                    <th>
+                        Gender
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead> 
+            <tbody>
+                @foreach (var item in (List<Consultation>)(ViewBag.Consultations))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)  @Html.DisplayFor(modelItem => item.LastName)<br />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Patient_Age)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Patient_Gender)
+                        </td>
+                        <td>
+                            @{
+                                string imageBase64 = item.Patient.Image!=null ? Convert.ToBase64String(item.Patient.Image) : string.Empty;
+                            }
+                            <img src="data:image;base64,@imageBase64" style="width: 80px; height: 80px; border-radius: 50%;" alt="Profile Image">
+                        </td>
+                        <td>
+                            <select asp-for="@item.Patient_Status" onchange="confirmUpdateStatus('@item.ConsultationID', this.value, '@item.Patient_Status')">
+                                @if(item.Patient_Status == "Accept"){
+                                    <option value="Accept" selected>Accept</option>
+                                    <option value="Completed">Completed</option>
+                                }
+                                else if (item.Patient_Status == "Completed")
+                                {
+                                    <option value="Accept">Accept</option>
+                                    <option value="Completed" selected>Completed</option>
+                                }
+
+                            </select>
+
+                        </td>
+
+                        <td>
+                            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.PatientID">Edit</a>
+                            <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.PatientID">Details</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.PatientID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmUpdateStatus(ConsultationID, newStatus, currentStatus) {
+        swal.fire({
+            title: 'are you sure?',
+            text: 'do you really want to change the doctor status?',
+            icon: 'warning',
+            showcancelbutton: true,
+            confirmbuttoncolor: '#3085d6',
+            cancelbuttoncolor: '#d33',
+            confirmbuttontext: 'yes, update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '@Url.Action("EditPatientStatus", "Patients")' + `?consultationid=${ConsultationID}&newstatus=${newStatus}`;
+            } else {
+                document.queryselector(`[value="${currentStatus}"]`).selected = true;
+            }
+        });
+    }
+</script>

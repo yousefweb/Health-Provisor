@@ -8,7 +8,7 @@ namespace HealthProvisor.Models.ViewModel
         [Required(ErrorMessage = "Please select a category.")]
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
-        public List<Category> Categories { get; set; }
+        public List<Category> ?Categories { get; set; }
 
         [Required(ErrorMessage = "Please enter your username.")]
         public string UserName { get; set; }
@@ -18,13 +18,16 @@ namespace HealthProvisor.Models.ViewModel
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please enter your first name.")]
+        [RegularExpression("^[a-zA-Z]*$", ErrorMessage = "Only alphabetical characters are allowed for the first name.")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Please enter your last name.")]
+        [RegularExpression("^[a-zA-Z]*$", ErrorMessage = "Only alphabetical characters are allowed for the Last name.")]
         public string LastName { get; set; }
 
+
         [Required(ErrorMessage = "Please enter your phone number.")]
-        [Phone(ErrorMessage = "Invalid phone number.")]
+        [RegularExpression(@"\+\d{12}", ErrorMessage = "Invalid phone number. Please enter a phone number with the format +XXXXXXXXXXXX.")]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Please enter the doctor's age.")]
@@ -36,18 +39,20 @@ namespace HealthProvisor.Models.ViewModel
         public Gender Doctor_Gender { get; set; }
 
         [Required(ErrorMessage = "Please enter your specialization.")]
-        public MedicalSpecialization? Doctor_Specialization { get; set; }
+        public MedicalSpecialization Doctor_Specialization { get; set; }
 
 
         [Required(ErrorMessage = "Please enter the years of experience.")]
         [Range(1, int.MaxValue, ErrorMessage = "Years of experience must be a non-negative number.")]
         public int Doctor_YearsOfExperience { get; set; }
 
-        [Required(ErrorMessage = "Doctor status is required")]
-        public string DoctorStatus { get; set; }
+        public string ?DoctorStatus { get; set; }
 
         [Required(ErrorMessage = "Image is required")]
-        public IFormFile FormFile { get; set; }
+        public IFormFile ?FormFile { get; set; }
+
+        [Required(ErrorMessage = "Certificate is required")]
+        public IFormFile ?FormFile2 { get; set; }
 
         [Required(ErrorMessage = "Please enter your password.")]
         [DataType(DataType.Password)]

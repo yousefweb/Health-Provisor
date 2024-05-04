@@ -1,52 +1,167 @@
-﻿@model _5Dots.Models.Visa
+﻿@model HealthProvisor.Models.Visa
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Visa Page";
 }
 
-<h1>Create</h1>
+<style>
+    .visa-card {
+        background-color: #f7f7f7;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
 
-<h4>Visa</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CVC" class="control-label"></label>
-                <input asp-for="CVC" class="form-control" />
-                <span asp-validation-for="CVC" class="text-danger"></span>
+        .visa-card label {
+            font-weight: bold;
+        }
+
+        .visa-card input[type="text"],
+        .visa-card input[type="date"],
+        .visa-card input[type="datetime-local"],
+        .visa-card select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .visa-card input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+            .visa-card input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+
+    .back-link {
+        margin-top: 20px;
+        display: inline-block;
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .consultation-cost {
+        color: #2596be;
+    }
+
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card visa-card">
+                <div class="card-body">
+                    <h4 class="card-title text-center mb-4 consultation-cost">ADD VISA CARD</h4>
+                    <img src="~/images/Visa.png" alt="Visa Logo" class="img-fluid mx-auto d-block mb-4" style="max-width: 200px;" />
+                    <form asp-action="Create" asp-controller="Visas" id="visaForm">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="CVC" class="control-label">CVC</label>
+                            <input asp-for="CVC" type="number" class="form-control" min="100" max="999" placeholder="e.g., 123" required />
+                            <span asp-validation-for="CVC" class="text-danger"></span>
+                            <div class="invalid-feedback">Please enter a valid 3-digit CVC.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="VisaNumber" class="control-label">Visa Number</label>
+                            <input asp-for="VisaNumber" class="form-control" maxlength="16" minlength="16" required />
+                            <span asp-validation-for="VisaNumber" class="text-danger"></span>
+                            <div class="invalid-feedback">Please enter a 16-digit Visa number.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="ExpDate" class="control-label">Expiration Date</label>
+                            <input asp-for="ExpDate" class="form-control" type="text" placeholder="MM/yy" required />
+                            <span asp-validation-for="ExpDate" class="text-danger"></span>
+                            <div class="invalid-feedback">Please enter a valid expiration date in the format MM/yy.</div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label asp-for="TransactionDate" class="control-label">Transaction Date</label>
+                            <input asp-for="TransactionDate" class="form-control" type="datetime-local" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" readonly />
+                            <span asp-validation-for="TransactionDate" class="text-danger"></span>
+                            <div class="invalid-feedback">Please enter the transaction date.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="PatientID" class="control-label">User</label>
+                            @{
+                                var patientName = ViewBag.PatientInfo != null ? ViewBag.PatientInfo.Item2 : "No patient Name found";
+                                var patientId = ViewBag.PatientInfo != null ? ViewBag.PatientInfo.Item1 : "No patient Id found";
+                            }
+                            <input type="text" class="form-control" value="@patientName" readonly />
+                            <input type="hidden" asp-for="PatientID" value="@patientId" />
+                            <span asp-validation-for="PatientID" class="text-danger"></span>
+                            <div class="invalid-feedback">Patient Name</div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary btn-block">Create</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="VisaNumber" class="control-label"></label>
-                <input asp-for="VisaNumber" class="form-control" />
-                <span asp-validation-for="VisaNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExpDate" class="control-label"></label>
-                <input asp-for="ExpDate" class="form-control" />
-                <span asp-validation-for="ExpDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TransactionDate" class="control-label"></label>
-                <input asp-for="TransactionDate" class="form-control" />
-                <span asp-validation-for="TransactionDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PatientID" class="control-label"></label>
-                <select asp-for="PatientID" class ="form-control" asp-items="ViewBag.PatientID"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    @* <script>
+        $(document).ready(function () {
+            $("#visaForm").submit(function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: '@Url.Action("Create", "Visas")',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success!',
+                                text: 'The Consultation has been sent successfully.'
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: response.error || 'An error occurred or data field cannot be empty.'
+                            });
+                        }
+                    },
+                    error: function () {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'An error occurred while Payment. Please try again with correct input.'
+                        });
+                    }
+                });
+            });
+        });
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+
+ *@
+ }

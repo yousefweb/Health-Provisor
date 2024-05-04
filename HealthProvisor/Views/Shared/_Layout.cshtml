@@ -1,16 +1,19 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@using HealthProvisor.Data
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
 @inject SignInManager<User> signInManager
 <!DOCTYPE html>
-<html lang="en"><!-- Basic -->
+<html lang="en">
+<!-- Basic -->
 <head>
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
-   
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
- 
-     <!-- Site Metas -->
-    <title>@ViewData["Title"] - Health Provisor</title>  
+
+    <!-- Site Metas -->
+    <title>@ViewData["Title"] - Health Provisor</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -23,17 +26,18 @@
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
     <!-- Pogo Slider CSS -->
     <link rel="stylesheet" href="~/css/pogo-slider.min.css">
-	<!-- Site CSS -->
-    <link rel="stylesheet" href="~/css/style.css">    
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/css/style.css">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="~/css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="~/css/custom.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 
-	<!-- CSS Files -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <!-- CSS Files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
 
 
     <!--[if lt IE 9]>
@@ -44,111 +48,129 @@
 </head>
 <body id="home" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
 
-	<!-- LOADER -->
-     <!-- <div id="preloader">
-		<div class="loader">
-			<img src="~/images/preloader.gif" alt="" />
-		</div>
+    <!-- LOADER -->
+    <!-- <div id="preloader">
+        <div class="loader">
+            <img src="~/images/preloader.gif" alt="" />
+        </div>
     </div>end loader -->
     <!-- END LOADER -->
-	
-	<!-- Start top bar -->
-	<div class="main-top">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="left-top">
-						@if (signInManager.IsSignedIn(User))
-						{
-							<a class="new-btn-d br-2" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"><span>Login</span></a>
-							<a class="new-btn-d br-2" asp-action="Profile" asp-controller="Patients"><span>Register</span></a>
-							<div class="mail-b"><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> @User.Identity.Name</a></div>
-						}
-						else{
-						<a class="new-btn-d br-2" asp-area="Identity" asp-page="/Account/Login"><span>Login</span></a>
-						<a class="new-btn-d br-2" asp-action="Register" asp-controller="Home"><span>Register</span></a>
-						<div class="mail-b"><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> HealthProvisor@gmail.com</a></div>
-						}
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="wel-nots">
-						<p>Welcome to Our Midical Consultaion</p>
-					</div>
-					<div class="right-top">
-						<ul>
-							<li><a href="https://www.facebook.com/yousef.aldeeb"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li><a href="https://twitter.com/Yousef1Aldeeb"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							<li><a href="https://www.instagram.com/yousefaldeeb1/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-							<li><a href="https://www.linkedin.com/in/yousef-al-deeb/"><i class="fa fa-brands fa-linkedin" aria-hidden="true"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End top bar -->
-	
-	<!-- Start header -->
-	<header class="top-header">
-		<nav class="navbar header-nav navbar-expand-lg">
+    <!-- Start top bar -->
+    <div class="main-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-top">
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            var userEmailClaim = User.FindFirst(ClaimTypes.Email);
+                            var userEmail = userEmailClaim != null ? userEmailClaim.Value : "";
+
+                            if (User.IsInRole("PATIENT"))
+                            {
+                                <a class="new-btn-d br-2" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"><span>Logout</span></a>
+                                <a class="new-btn-d br-2" asp-action="Profile" asp-controller="Patients"><span>Profile</span></a>
+                                <div class="mail-b"><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> @userEmail</a></div>
+                            }
+                            else if (User.IsInRole("DOCTOR"))
+                            {
+                                <a class="new-btn-d br-2" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"><span>Logout</span></a>
+                                <a class="new-btn-d br-2" asp-action="DoctorProfile" asp-controller="Doctors"><span>Dashboard</span></a>
+                                <div class="mail-b"><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> @userEmail</a></div>
+                            }
+                            else
+                            {
+                                <a class="new-btn-d br-2" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"><span>Logout</span></a>
+                                <a class="new-btn-d br-2" asp-area="Administrator" asp-controller="Admin" asp-action="Index"><span>Dashboard</span></a>
+                                <div class="mail-b"><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> @userEmail</a></div>
+
+                            }
+                        }
+                        else
+                        {
+                            <a class="new-btn-d br-2" asp-area="Identity" asp-page="/Account/Login"><span>Login</span></a>
+                            <a class="new-btn-d br-2" asp-action="Register" asp-controller="Home" asp-area=""><span>Register</span></a>
+                            <div class="mail-b"><a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSBnNZrrgzXVRQlbJwwkVxrDNrVhvCwfSldJfVJwCGmlmHGSJsjdpzmjNQpzJqXDPHPMntTm"><i class="fa fa-envelope-o" aria-hidden="true"></i> HealthProvisor@gmail.com</a></div>
+                        }
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="wel-nots">
+                        <p>Welcome to Our Midical Consultaion</p>
+                    </div>
+                    <div class="right-top">
+                        <ul>
+                            <li><a href="https://www.facebook.com/yousef.aldeeb"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="https://twitter.com/Yousef1Aldeeb"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.instagram.com/yousefaldeeb1/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/yousef-al-deeb/"><i class="fa fa-brands fa-linkedin" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End top bar -->
+    <!-- Start header -->
+    <header class="top-header">
+        <nav class="navbar header-nav navbar-expand-lg">
             <div class="container">
-				<a class="navbar-brand" href="#"><img src="~/images/logo.png" alt="image"></a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-wd" aria-controls="navbar-wd" aria-expanded="false" aria-label="Toggle navigation">
-					<span></span>
-					<span></span>
-					<span></span>
-				</button>
+                <a class="navbar-brand" href="#"><img src="~/images/logo.png" alt="image"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-wd" aria-controls="navbar-wd" aria-expanded="false" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
                     <ul class="navbar-nav">
-						<li><a class="nav-link" asp-action="Index" asp-controller="Home">Home</a></li>
-						<li><a class="nav-link"  asp-action="AboutUs" asp-controller="Home">About Us</a></li>
-						<li><a class="nav-link"  asp-action="Services" asp-controller="Home">Services</a></li>
-						<li><a class="nav-link"  asp-action="Index" asp-controller="Home">Gallery</a></li>
-						<li><a class="nav-link"  asp-action="AboutUs" asp-controller="Home">Doctor</a></li>
-						<li><a class="nav-link"  asp-action="Services" asp-controller="Home">Blog</a></li>
+                        <li><a class="nav-link" asp-action="Index" asp-controller="Home" asp-area="">Home</a></li>
+                        <li><a class="nav-link" asp-action="AboutUs" asp-controller="Home" asp-area="">About Us</a></li>
+                        <li><a class="nav-link" asp-action="Services" asp-controller="Home" asp-area="">Services</a></li>
+                        <li><a class="nav-link" asp-action="OurDoctor" asp-controller="Home" asp-area="">Doctor</a></li>
+                        <li><a class="nav-link" asp-action="Blog" asp-controller="Home" asp-area="">Blog</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-	</header>
-	<!-- End header -->
-    
-	<div>
-		@RenderBody()
-	</div>
-	
-	<!-- Start Footer -->
-	<footer class="footer-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<p class="footer-company-name">All Rights Reserved. &copy; 2024 <a href="#">Health Provisor</a> Design By : <a href="#">Yousef Aldeeb</a></p>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- End Footer -->
-	
-	<a href="#" id="scroll-to-top" class="new-btn-d br-2"><i class="fa fa-angle-up"></i></a>
+    </header>
+    <!-- End header -->
 
-	<!-- ALL JS FILES -->
-	<script src="~/js/jquery.min.js"></script>
-	<script src="~/js/popper.min.js"></script>
-	<script src="~/js/bootstrap.min.js"></script>
+    <div>
+        @RenderBody()
+    </div>
+
+    <!-- Start Footer -->
+    <footer class="footer-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="footer-company-name">All Rights Reserved. &copy; 2024 <a href="#">Health Provisor</a> Design By : <a href="#">Yousef Aldeeb</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a href="#" id="scroll-to-top" class="new-btn-d br-2"><i class="fa fa-angle-up"></i></a>
+
+    <!-- ALL JS FILES -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
     <!-- ALL PLUGINS -->
-	<script src="~/js/jquery.magnific-popup.min.js"></script>
-    <script src="~/js/jquery.pogo-slider.min.js"></script> 
-	<script src="~/js/slider-index.js"></script>
-	<script src="~/js/smoothscroll.js"></script>
-	<script src="~/js/TweenMax.min.js"></script>
-	<script src="~/js/main.js"></script>
-	<script src="~/js/owl.carousel.min.js"></script>
-	<script src="~/js/form-validator.min.js"></script>
+    <script src="~/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/jquery.pogo-slider.min.js"></script>
+    <script src="~/js/slider-index.js"></script>
+    <script src="~/js/smoothscroll.js"></script>
+    <script src="~/js/TweenMax.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/form-validator.min.js"></script>
     <script src="~/js/contact-form-script.js"></script>
-	<script src="~/js/isotope.min.js"></script>	
-	<script src="~/js/images-loded.min.js"></script>	
+    <script src="~/js/isotope.min.js"></script>
+    <script src="~/js/images-loded.min.js"></script>
     <script src="~/js/custom.js"></script>
-	@await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

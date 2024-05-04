@@ -1,0 +1,145 @@
+﻿@model IEnumerable<Doctor>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .thead-dark {
+        background-color: #343a40;
+        color: white;
+    }
+</style>
+<h1>Doctors</h1>
+
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Full Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Specialization
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                Years of Experience
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Certificate
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doctor in (List<Doctor>)(ViewBag.Doctors))
+        {
+
+            <tr>
+                <td>
+                    @doctor.User.FirstName @doctor.User.LastName
+                </td>
+                <td>
+                   @doctor.User.Email
+                </td>
+                <td>
+                    @doctor.Doctor_Specialization
+                </td>
+                <td>
+                    @doctor.Doctor_Age
+                </td>
+                <td>
+                      @doctor.Doctor_Gender
+                </td>
+                <td>
+                    @doctor.Doctor_YearsOfExperience
+                </td>
+               
+                    <td>
+                        <select asp-for="@doctor.DoctorStatus" onchange="confirmUpdateStatus('@doctor.DoctorID', this.value, '@doctor.DoctorStatus')">
+                                @if (@doctor.DoctorStatus == "Pending")
+                                {
+                                <option value="Pending" selected>Pending</option>
+                                <option value="Accept">Accept</option>
+                                <option value="Reject">Reject</option>
+                                }
+                            else if (@doctor.DoctorStatus == "Accept")
+                                {
+                                <option value="Pending">Pending</option>
+                                <option value="Accept" selected>Accept</option>
+                                <option value="Reject">Reject</option>
+                                }
+                            else if (@doctor.DoctorStatus == "Reject")
+                                {
+                                <option value="Pending">Pending</option>
+                                <option value="Accept">Accept</option>
+                                <option value="Reject" selected>Reject</option>
+                                }
+                        </select>
+                    </td>
+                <td>
+                    @{
+                        string imageBase64 = doctor.Image != null ? Convert.ToBase64String(doctor.Image) : string.Empty;
+                    }
+                    <img src="data:image;base64,@imageBase64" style="width: 80px; height: 80px; border-radius: 50%;" alt="Profile Image">
+                </td>
+                <td>
+                    @{
+                        string imageBase64_2 = doctor.Certificate != null ? Convert.ToBase64String(doctor.Certificate) : string.Empty;
+                    }
+                    <img onclick="downloadImage(this.src)" src="data:image;base64,@imageBase64_2" style="width: 80px; height: 80px; border-radius: 50%;" alt="Doctor Certificate">
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@doctor.DoctorID">Edit</a>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@doctor.DoctorID">Details</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@doctor.DoctorID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmUpdateStatus(DoctorID, newStatus, currentStatus) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Do you really want to change the Doctor status?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '@Url.Action("EditDoctorStatus", "Doctors")' + `?DoctorID=${DoctorID}&newStatus=${newStatus}`;
+            } else {
+                document.querySelector(`[value="${currentStatus}"]`).selected = true;
+            }
+        });
+    }
+    function downloadImage(src) {
+        var link = document.createElement('a');
+        link.href = src;
+        link.download = 'certificate.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+</script>

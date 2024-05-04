@@ -1,5 +1,5 @@
-﻿using _5Dots.Models;
-using HealthProvisor.Models;
+﻿using HealthProvisor.Models;
+using HealthProvisor.Models.ViewModel;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,8 +14,9 @@ namespace HealthProvisor.Data
 		public DbSet<Visa> Visas { get; set; }
 		public DbSet<Testimonial> Testimonials { get; set; }
 		public DbSet<Review> Reviews { get; set; }
+        public DbSet<DoctorNoteToPatient> DoctorNoteToPatients { get; set; }
 
-		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
 		{
 		}
 
@@ -42,6 +43,33 @@ namespace HealthProvisor.Data
 				.HasOne(c => c.Doctor)
 				.WithMany(d => d.Consultations)
 				.HasForeignKey(c => c.DoctorID);
-		}
+
+			modelBuilder.Entity<Consultation>()
+				.HasOne(c => c.Visa)
+				.WithMany(d => d.Consultations)
+				.HasForeignKey(c => c.VisaId);
+
+			modelBuilder.Entity<DoctorNoteToPatient>(entity =>
+            {
+               
+                entity.HasKey(dnp => dnp.Id);
+
+                entity.HasOne(dnp => dnp.Patient)
+                    .WithMany(p => p.DoctorNoteToPatients)
+                    .HasForeignKey(dnp => dnp.PatientID)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(dnp => dnp.Consultation)
+                    .WithMany(c => c.DoctorNoteToPatients)
+                    .HasForeignKey(dnp => dnp.ConsultationID)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(dnp => dnp.Doctor)
+                 .WithMany(c => c.DoctorNoteToPatients)
+                 .HasForeignKey(dnp => dnp.DoctorID)
+                 .OnDelete(DeleteBehavior.Restrict);
+
+            });
+        }
 	}
 }

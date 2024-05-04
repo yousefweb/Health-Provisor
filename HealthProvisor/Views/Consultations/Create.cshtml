@@ -1,46 +1,209 @@
 ﻿@model HealthProvisor.Models.Consultation
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Consultations";
 }
-
-<h1>Create</h1>
-
-<h4>Consultation</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="PatientID" class="control-label"></label>
-                <select asp-for="PatientID" class ="form-control" asp-items="ViewBag.PatientID"></select>
+<style>
+    .custom-input {
+        background-color: transparent;
+        border: 2px solid #12557f;
+        color: #12557f;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+        .custom-input:hover {
+            background-color: rgba(18, 85, 127, 0.5);
+        }
+</style>
+
+
+<!-- Start Consulatation -->
+<div class="appointment-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-box">
+                    <h2>Consultation</h2>
+                    <p>At HealthProvisor, we believe in providing personalized and comprehensive consultations to address your health concerns. Our team of experienced healthcare professionals is dedicated to offering expert advice and guidance tailored to your individual needs. Whether you are seeking medical advice, a second opinion, or simply looking to maintain a healthy lifestyle, our consultation services are designed to support you at every step. Your well-being is our priority, and we are committed to delivering high-quality healthcare solutions. Trust us for reliable consultations that prioritize your health and empower you to make informed decisions.</p>
+
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="DoctorID" class="control-label"></label>
-                <select asp-for="DoctorID" class ="form-control" asp-items="ViewBag.DoctorID"></select>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="well-block">
+                    <div class="well-title">
+                        @if (ViewBag.CategoryId == 1)
+                        {
+                            <h2>Consult Now For Men</h2>
+                        }
+                        else if (ViewBag.CategoryId == 2)
+                        {
+                            <h2>Consult Now For Women</h2>
+                        }
+                        else
+                        {
+                            <h2>Consult Now For Adults</h2>
+                        }
+                    </div>
+                    <form method="post" asp-action="Create" asp-controller="Consultations">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+ 
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="FirstName" class="control-label">First Name</label>
+                                    <input asp-for="FirstName" type="text" placeholder="First Name" class="form-control input-md">
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="LastName" class="control-label">Last Name</label>
+                                    <input asp-for="LastName" type="text" placeholder="Last Name" class="form-control input-md">
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Patient_Gender" class="control-label">Gender</label>
+                                    <select asp-for="Patient_Gender" class="form-control input-md">
+                                        <option value="">Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                    <span asp-validation-for="Patient_Gender" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Patient_Age" class="control-label">Age</label>
+                                    <input asp-for="Patient_Age" placeholder="Age" class="form-control input-md">
+                                    <span asp-validation-for="Patient_Age" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Date" class="control-label">Date:</label>
+                                    <input asp-for="Date" type="datetime-local" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" readonly/>
+                                    <span asp-validation-for="Date" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="DoctorID" class="control-label">Select Doctor</label>
+                                        <select asp-for="DoctorID" class="form-control" id="doctorSelect">
+                                            <option value="">Select Doctor</option>
+                                            @foreach (var doctor in ViewBag.Doctors)
+                                            {
+                                                <option value="@doctor.DoctorID">@doctor.User.FirstName @doctor.User.LastName</option>
+                                            }
+                                        </select>
+                                        <span asp-validation-for="DoctorID" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            <div class="col-md-6 mx-auto text-center">
+                                    <div class="form-group">
+                                        <label class="control-label">Doctor Specialization</label>
+                                        <input type="text" class="form-control" id="doctorSpecialization" readonly>
+                                    </div>
+                                </div>
+                            
+
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Notes" class="control-label">Your Note</label>
+                                    <textarea asp-for="Notes" placeholder="Write about your condition" rows="5"  class="form-control input-md"></textarea>
+                                    <span asp-validation-for="Notes" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- Button -->
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="submit" value="Go to Checkout" class="btn btn-outline-primary" />
+                                    <a asp-action="Index" asp-controller="Home" class="btn btn-primary custom-input">Back to the Home</a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </form>
+                    <!-- form end -->
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
-                <span asp-validation-for="Date" class="text-danger"></span>
+            <div class="col-lg-6 col-md-6">
+                <div class="well-block">
+                    <div class="well-title">
+                        <h2>Why Consult from Us</h2>
+                    </div>
+                    <div class="feature-block">
+                        <div class="feature feature-blurb-text">
+                            <h4 class="feature-title">24/7 Hours Available</h4>
+                            <div class="feature-content">
+                                <p>Our services are accessible 24/7 to ensure you receive the care you need at any time. We understand that health concerns may arise at any hour, and our team is here to support you.</p>
+                            </div>
+                        </div>
+                        <div class="feature feature-blurb-text">
+                            <h4 class="feature-title">Experienced Staff Available</h4>
+                            <div class="feature-content">
+                                <p>
+                                    Benefit from our team of highly experienced professionals who are dedicated to providing the best care possible. Our knowledgeable staff is committed to ensuring your well-being and addressing your specific health needs.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="feature feature-blurb-text">
+                            <h4 class="feature-title">Low Price & Fees</h4>
+                            <div class="feature-content">
+                                <p>
+                                    We believe in providing quality care without breaking the bank. Our services come with reasonable and transparent pricing to ensure accessibility for everyone. Your health is our priority, and we strive to make it affordable for all.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Notes" class="control-label"></label>
-                <input asp-for="Notes" class="form-control" />
-                <span asp-validation-for="Notes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.getElementById("doctorSelect").addEventListener("change", function () {
+            var selectedDoctorId = this.value;
+            if (selectedDoctorId) {
+                $.ajax({
+                    url: '@Url.Action("GetDoctorSpecialization", "Consultations")',
+                    type: 'POST',
+                    data: { doctorId: selectedDoctorId },
+                    success: function (specialization) {
+                        document.getElementById("doctorSpecialization").value = specialization;
+                    },
+                    error: function () {
+                        alert('Error occurred while retrieving specialization.');
+                    }
+                });
+            }
+            else {
+                document.getElementById("doctorSpecialization").value = "";
+            }
+        });
+       
+     
+    </script>
+
 }
+<!-- End Consulatation -->

@@ -17,42 +17,10 @@ namespace HealthProvisor.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.24")
+                .HasAnnotation("ProductVersion", "6.0.28")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("_5Dots.Models.Visa", b =>
-                {
-                    b.Property<int>("VisaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VisaId"), 1L, 1);
-
-                    b.Property<short>("CVC")
-                        .HasColumnType("smallint");
-
-                    b.Property<DateTime>("ExpDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("PatientID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("TransactionDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("VisaNumber")
-                        .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
-
-                    b.HasKey("VisaId");
-
-                    b.HasIndex("PatientID");
-
-                    b.ToTable("Visas");
-                });
 
             modelBuilder.Entity("Doctor", b =>
                 {
@@ -65,12 +33,23 @@ namespace HealthProvisor.Data.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("Certificate")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("CertificateContentType")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("CertificateName")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<string>("ContentType")
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("DoctorStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Doctor_Age")
@@ -115,14 +94,27 @@ namespace HealthProvisor.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"), 1L, 1);
 
+                    b.Property<string>("BenefitsHeading")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CategoryDescription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ContentType")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("ImageName")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.HasKey("CategoryId");
 
@@ -143,12 +135,34 @@ namespace HealthProvisor.Data.Migrations
                     b.Property<int>("DoctorID")
                         .HasColumnType("int");
 
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsSubmitted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Notes")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PatientID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Patient_Age")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Patient_Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Patient_Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VisaId")
                         .HasColumnType("int");
 
                     b.HasKey("ConsultationID");
@@ -157,7 +171,47 @@ namespace HealthProvisor.Data.Migrations
 
                     b.HasIndex("PatientID");
 
+                    b.HasIndex("VisaId");
+
                     b.ToTable("Consultations");
+                });
+
+            modelBuilder.Entity("HealthProvisor.Models.DoctorNoteToPatient", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ConsultationDetails")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ConsultationID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DoctorID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DoctorNote")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("MessageTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PatientID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConsultationID");
+
+                    b.HasIndex("DoctorID");
+
+                    b.HasIndex("PatientID");
+
+                    b.ToTable("DoctorNoteToPatients");
                 });
 
             modelBuilder.Entity("HealthProvisor.Models.Review", b =>
@@ -184,6 +238,10 @@ namespace HealthProvisor.Data.Migrations
 
                     b.Property<int>("ReviewRate")
                         .HasColumnType("int");
+
+                    b.Property<string>("ReviewStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ReviewId");
 
@@ -298,6 +356,39 @@ namespace HealthProvisor.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("HealthProvisor.Models.Visa", b =>
+                {
+                    b.Property<int>("VisaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VisaId"), 1L, 1);
+
+                    b.Property<short>("CVC")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("ExpDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PatientID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("TransactionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("VisaNumber")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("nvarchar(16)");
+
+                    b.HasKey("VisaId");
+
+                    b.HasIndex("PatientID");
+
+                    b.ToTable("Visas");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -463,7 +554,6 @@ namespace HealthProvisor.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Patient_Status")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
@@ -476,17 +566,6 @@ namespace HealthProvisor.Data.Migrations
                         .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Patients");
-                });
-
-            modelBuilder.Entity("_5Dots.Models.Visa", b =>
-                {
-                    b.HasOne("Patient", "Patient")
-                        .WithMany()
-                        .HasForeignKey("PatientID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Patient");
                 });
 
             modelBuilder.Entity("Doctor", b =>
@@ -518,6 +597,41 @@ namespace HealthProvisor.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("HealthProvisor.Models.Visa", "Visa")
+                        .WithMany("Consultations")
+                        .HasForeignKey("VisaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Patient");
+
+                    b.Navigation("Visa");
+                });
+
+            modelBuilder.Entity("HealthProvisor.Models.DoctorNoteToPatient", b =>
+                {
+                    b.HasOne("HealthProvisor.Models.Consultation", "Consultation")
+                        .WithMany("DoctorNoteToPatients")
+                        .HasForeignKey("ConsultationID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Doctor", "Doctor")
+                        .WithMany("DoctorNoteToPatients")
+                        .HasForeignKey("DoctorID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Patient", "Patient")
+                        .WithMany("DoctorNoteToPatients")
+                        .HasForeignKey("PatientID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Consultation");
+
                     b.Navigation("Doctor");
 
                     b.Navigation("Patient");
@@ -543,6 +657,17 @@ namespace HealthProvisor.Data.Migrations
                 });
 
             modelBuilder.Entity("HealthProvisor.Models.Testimonial", b =>
+                {
+                    b.HasOne("Patient", "Patient")
+                        .WithMany()
+                        .HasForeignKey("PatientID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Patient");
+                });
+
+            modelBuilder.Entity("HealthProvisor.Models.Visa", b =>
                 {
                     b.HasOne("Patient", "Patient")
                         .WithMany()
@@ -616,11 +741,18 @@ namespace HealthProvisor.Data.Migrations
             modelBuilder.Entity("Doctor", b =>
                 {
                     b.Navigation("Consultations");
+
+                    b.Navigation("DoctorNoteToPatients");
                 });
 
             modelBuilder.Entity("HealthProvisor.Models.Category", b =>
                 {
                     b.Navigation("Doctors");
+                });
+
+            modelBuilder.Entity("HealthProvisor.Models.Consultation", b =>
+                {
+                    b.Navigation("DoctorNoteToPatients");
                 });
 
             modelBuilder.Entity("HealthProvisor.Models.User", b =>
@@ -630,9 +762,16 @@ namespace HealthProvisor.Data.Migrations
                     b.Navigation("Patient");
                 });
 
+            modelBuilder.Entity("HealthProvisor.Models.Visa", b =>
+                {
+                    b.Navigation("Consultations");
+                });
+
             modelBuilder.Entity("Patient", b =>
                 {
                     b.Navigation("Consultations");
+
+                    b.Navigation("DoctorNoteToPatients");
                 });
 #pragma warning restore 612, 618
         }

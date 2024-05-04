@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Doctor>
+@{
+    ViewData["Title"] = "OurDoctor Page";
+}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .overlay-scrollbar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #414148;
+        padding: 25px 0;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .special-title {
+       
+        font-weight: bold;
+        color: white;
+        text-shadow:
+        0 0 5px  #4CAF50, 
+        0 0 20px #FFEB3B, 
+        0 0 25px #4CAF50, 
+        0 0 30px #2196F3, 
+        0 0 35px #9C27B0, 
+        0 0 40px #2196F3;
+        background-color: rgba(0, 100, 0, 0.5)
+    }
+</style>
+<!-- Start Team -->
+<div id="team" class="team-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 mx-auto text-center">
+                <div class="title-box">
+                    <h2>Our Doctor</h2>
+                    <p>Meet our team of dedicated and experienced doctors who are committed to providing exceptional healthcare services</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in (List<Doctor>)(ViewBag.Doctors))
+            {
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <div class="our-team">
+                            <div class="pic">
+                                @{
+                                    string imageBase64 = item.Image != null ? Convert.ToBase64String(item.Image) : string.Empty;
+                                }
+                                <img class="card-img-top rounded-circle" src="data:image;base64,@imageBase64" alt="Doctor Photo" />
+                            </div>
+                            <div class="team-content">
+                                <h5 class="card-title mb-0 special-title">@item.User?.FirstName @item.User?.LastName</h5>
+                                <span class="post">Specialization: @item.Doctor_Specialization</span><br />
+                                <span class="post">Doctor Experience: @item.Doctor_YearsOfExperience</span><br />
+                                <span class="post">Type of Consult: @item.Category?.CategoryName</span><br />
+                                <span class="post">Email: @item.User?.Email</span><br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+
+    </div>
+</div>
+<!-- End Team -->

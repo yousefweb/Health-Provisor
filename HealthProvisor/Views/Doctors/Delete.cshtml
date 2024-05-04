@@ -53,23 +53,23 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DoctorStatus)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageName)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Certificate)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ContentType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ContentType)
+        <dd class="col-sm-10">
+            @{
+                string imageBase64_2 = Model.Certificate != null ? Convert.ToBase64String(Model.Certificate) : string.Empty;
+            }
+            <img src="data:image;base64,@imageBase64_2" style="width: 80px; height: 80px; border-radius: 50%;" alt="Doctor Certificate">
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Image)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
+            @{
+                string imageBase64 = Model.Image != null ? Convert.ToBase64String(Model.Image) : string.Empty;
+            }
+            <img src="data:image;base64,@imageBase64" style="width: 80px; height: 80px; border-radius: 50%;" alt="Profile Image">
         </dd>
     </dl>
     

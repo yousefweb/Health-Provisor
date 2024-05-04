@@ -4,45 +4,45 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+
+<div class="container">
+    <h4>Patient Details</h4>
+    <hr />
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Patient Name</th>
+                    <td>@Html.DisplayFor(model => model.User.FirstName) @Html.DisplayFor(model => model.User.LastName)</td>
+                </tr>
+                <tr>
+                    <th>Patient Email</th>
+                    <td>@Html.DisplayFor(model => model.User.Email)</td>
+                </tr>
+                <tr>
+                    <th>Patient Age</th>
+                    <td>@Html.DisplayFor(model => model.Patient_Age)</td>
+                </tr>
+                <tr>
+                    <th>Patient Gender</th>
+                    <td>@Html.DisplayFor(model => model.Patient_Gender)</td>
+                </tr>
+                <tr>
+                    <th>Patient Image</th>
+                    <td>
+                        @{
+                            string imageBase64 = Convert.ToBase64String(Model.Image);
+                        }
+                        <img src="data:image;base64,@imageBase64" style="width: 80px; height: 80px; border-radius: 50%;" alt="Profile Image">
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
 
 <div>
-    <h4>Patient</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Patient_Age)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Patient_Age)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Patient_Gender)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Patient_Gender)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ContentType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ContentType)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.PatientID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.PatientID" class="btn btn-primary">Edit</a> |
+    <a asp-action="PatientRequest" class="btn btn-secondary">Back to List</a>
 </div>

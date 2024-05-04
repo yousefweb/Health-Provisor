@@ -8,23 +8,29 @@ using Microsoft.EntityFrameworkCore;
 using HealthProvisor.Data;
 using HealthProvisor.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
 
 namespace HealthProvisor.Controllers
 {
     public class TestimonialsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public TestimonialsController(ApplicationDbContext context)
+        public TestimonialsController(ApplicationDbContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Testimonials
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Testimonials.Include(t => t.Patient);
-            return View(await applicationDbContext.ToListAsync());
+            var testimonials = _context.Testimonials
+         .Include(t => t.Patient)
+         .ThenInclude(p => p.User);
+
+            return View(await testimonials.ToListAsync());
         }
 
         // GET: Testimonials/Details/5
@@ -60,11 +66,37 @@ namespace HealthProvisor.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Testimonial testimonial)
         {
-            testimonial.Patient.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            testimonial.TestimonialStatus = "Pending";
-            _context.Add(testimonial);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Home");
+           
+            if (User.Identity.IsAuthenticated)
+            {
+                
+                var user = await _userManager.GetUserAsync(User);
+
+              
+                if (user != null)
+                {
+                
+                    var patient = _context.Patients.FirstOrDefault(p => p.UserId == user.Id);
+
+                   
+                    if (patient != null)
+                    {
+                        testimonial.PatientID = patient.PatientID;
+
+                        testimonial.TestimonialStatus = "Pending";
+
+                       
+                        _context.Add(testimonial);
+                        await _context.SaveChangesAsync();
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+            }
+
+            // Handle the case where the user is not authenticated, not found, or patient not found
+            ModelState.AddModelError(string.Empty, "User not found, not authenticated, or patient not found.");
+            return View(testimonial); 
         }
 
         // GET: Testimonials/Edit/5

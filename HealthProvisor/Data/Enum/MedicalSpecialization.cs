@@ -4,10 +4,10 @@
     {
         Cardiology,
         Dermatology,
-        Endocrinology,
+        General,
         Gastroenterology,
         Hematology,
-        InfectiousDisease,
+        Internal,
         Nephrology,
         Neurology,
         Oncology,
