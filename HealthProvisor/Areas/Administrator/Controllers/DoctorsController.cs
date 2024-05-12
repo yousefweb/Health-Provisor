@@ -274,7 +274,7 @@ namespace HealthProvisor.Areas.Administrator.Controllers
             {
                 smtp.ServerCertificateValidationCallback = (sender, certificate, chain, errors) => true;
                 smtp.Connect("smtp.gmail.com", 587, false);
-                smtp.Authenticate("HealthProvisor@gmail.com", "zfii pcdg ysyy aunn");
+                smtp.Authenticate("HealthProvisor@gmail.com", "");
                 await smtp.SendAsync(email);
                 smtp.Disconnect(true);
             }
