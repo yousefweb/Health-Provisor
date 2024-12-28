@@ -12,6 +12,7 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
+
         body {
             background-image: url('/images/login.jpg');
             background-size: cover;
@@ -19,8 +20,10 @@
             background-repeat: no-repeat;
             margin: 0;
             padding: 0;
-            overflow: hidden;
+           overflow-x: hidden; 
         }
+
+
 
         .card {
             background-color: lightslategray;
@@ -62,19 +65,17 @@
         }
 
         footer {
-            position: fixed;
+            position: relative;
             bottom: 0;
             width: 100%;
             background-color: #414148;
             padding: 25px 0;
             box-sizing: border-box;
             text-align: center;
-        }
-
+        } 
     </style>
 </head>
 <body>
-
     <div class="container mt-3">
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-6 mb-4">
@@ -124,7 +125,6 @@
             </div>
         </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

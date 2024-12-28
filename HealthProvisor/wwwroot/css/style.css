@@ -1376,8 +1376,8 @@ select.form-control:not([size]):not([multiple]){
 	color: red;
 }
 
-.footer-box{
-	background: #292f35;
+.footer-box { 
+	background: #09283c;
 	padding: 35px 0;
 }
 
